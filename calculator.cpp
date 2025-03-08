@@ -27,7 +27,7 @@ bool calculator::is_a_floating_point(string num)
         return true;
 }
 
-
+// apply addition to two reversed integer
 string calculator::reverse_addition(string fir, string sec)
 {
     string ans;
@@ -41,20 +41,20 @@ string calculator::reverse_addition(string fir, string sec)
     size_t index{};
     for(;index < min_length; index++)
     {
-        int sum = atoi(&fir[index]) + atoi(&sec[index]) + carry;
-        carry = sum % 10;
-        result = sum / 10;
+        int sum = (fir[index] - '0') + (sec[index] - '0') + carry;
+        carry = sum / 10;
+        result = sum % 10;
         
         ans.append(to_string(result));
     }
-    
+
     if(index != length_fir)
     {
         for( ;index < length_fir; index++)
         {
-            int sum = atoi(&fir[index]) + carry;
-            carry = sum % 10;
-            result = sum / 10;
+            int sum = (fir[index] - '0') + carry;
+            carry = sum / 10;
+            result = sum % 10;
 
             ans.append(to_string(result));
         }
@@ -64,18 +64,37 @@ string calculator::reverse_addition(string fir, string sec)
     {
         for( ;index < length_sec; index++)
         {
-            int sum = atoi(&sec[index]) + carry;
-            carry = sum % 10;
-            result = sum / 10;
+            int sum = sec[index] - '0' + carry;
+            carry = sum / 10;
+            result = sum % 10;
 
             ans.append(to_string(result));
         }
     }
 
-    ans.append(to_string(carry));
+    if(carry != 0)
+        ans.append(to_string(carry));
     
     reverse(ans.begin(),ans.end());
+    // delete_leading_zero(ans);
     return ans;
+}
+
+// delete the leading zero of the correct result
+void calculator::delete_leading_zero(string& ans)
+{
+    size_t length = ans.length();
+    for(size_t i = 0; i < length; i++)
+    {
+        if(ans[i] != 0)
+            break;
+        else
+        {
+            ans.erase(i,1);
+            i--;
+        }
+    }
+    return;
 }
 
 // add two integers
@@ -106,31 +125,36 @@ bool calculator::if_carry(string fir, string sec)
 // reverse a floating point
 // put the result in a pair, put the before-decimal part into the first
 // the rest into the second
-pair<string, string> calculator::reverse_flot(string num)
+pair<string, string> calculator::split_flot(string num)
 {
-    pair<string, string> reversed_num;
+    pair<string, string> splited_num;
 
+    if(!is_a_floating_point(num))
+    {
+        splited_num.first = num;
+        splited_num.second = "";
+    }
     auto decimal_pos = num.find('.');
-    reversed_num.first = num.substr(0,decimal_pos);
-    reversed_num.second = num.substr(decimal_pos + 1);
+    splited_num.first = num.substr(0,decimal_pos);
+    splited_num.second = num.substr(decimal_pos + 1);
     
-    return reversed_num;
+    return splited_num;
 }
 
 // add two floating points
 string calculator::floating_point_addition(string fir, string sec)
 {
     string ans;
-    auto fir_rev = reverse_flot(fir);
-    auto sec_rev = reverse_flot(sec);
+    auto fir_splited = split_flot(fir);
+    auto sec_splited = split_flot(sec);
     
     string sum_after_decimal;
     string sum_before_decimal;
-    sum_before_decimal = reverse_addition(fir_rev.first, sec_rev.first);
+    sum_before_decimal = integer_addition(fir_splited.first, sec_splited.first);
 
-    if(if_carry(fir_rev.second, sec_rev.second))
+    if(if_carry(fir_splited.second, sec_splited.second))
     {
-        sum_after_decimal = reverse_addition(fir_rev.second, sec_rev.second);
+        sum_after_decimal = integer_addition(fir_splited.second, sec_splited.second);
         sum_after_decimal.erase(0, 1);
 
         // add the carry to the sum
@@ -142,7 +166,7 @@ string calculator::floating_point_addition(string fir, string sec)
 
     else
     {
-        sum_after_decimal = reverse_addition(fir_rev.second, sec_rev.second);
+        sum_after_decimal = integer_addition(fir_splited.second, sec_splited.second);
 
         //combine two sums
         ans = sum_before_decimal + "." + sum_after_decimal;

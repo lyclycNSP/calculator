@@ -17,8 +17,9 @@ namespace calculator
     string floating_point_addition(string, string);
     string integer_addition(string, string);
     bool if_carry(string, string);
-    pair<string,string> reverse_flot(string);
+    pair<string,string> split_flot(string);
     string reverse_addition(string, string);
+    void delete_leading_zero(string&);
 }
 
 #endif
