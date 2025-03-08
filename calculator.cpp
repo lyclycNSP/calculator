@@ -108,15 +108,37 @@ string calculator::integer_addition(string fir, string sec)
     return ans;
 }
 
+string calculator::decimal_addition(string fir, string sec)
+{
+    string ans;
+    size_t fir_length = fir.length();
+    size_t sec_length = sec.length();
+
+    if(fir_length == sec_length)
+        ans = integer_addition(fir,sec);
+    else
+    {
+        string biggerNum = fir_length > sec_length ? fir : sec;
+        string smallerNum = fir_length < sec_length ? fir : sec;
+
+        size_t maxlength = biggerNum.length();
+        size_t minlength = smallerNum.length();
+
+        string truncted_left_Num = biggerNum.substr(0,minlength);
+        string trunctedNum = biggerNum.substr(minlength, maxlength - minlength);
+        ans = integer_addition(truncted_left_Num, smallerNum);
+        ans.append(trunctedNum);
+    }
+    return ans;
+}
+
 // judge if two integer's addition produce a carry
 bool calculator::if_carry(string fir, string sec)
 {
-    auto max_length = max(fir.length(), sec.length());
-    
-    auto sum = integer_addition(fir, sec);
+    size_t maxlength = fir.length() > sec.length() ? fir.length() : sec.length();
 
-    auto sum_length = sum.length();
-    if(sum_length > max_length)
+    string ans = decimal_addition(fir, sec);
+    if(ans.length() > maxlength)
         return true;
     else
         return false;
@@ -154,7 +176,7 @@ string calculator::floating_point_addition(string fir, string sec)
 
     if(if_carry(fir_splited.second, sec_splited.second))
     {
-        sum_after_decimal = integer_addition(fir_splited.second, sec_splited.second);
+        sum_after_decimal = decimal_addition(fir_splited.second, sec_splited.second);
         sum_after_decimal.erase(0, 1);
 
         // add the carry to the sum
@@ -166,7 +188,7 @@ string calculator::floating_point_addition(string fir, string sec)
 
     else
     {
-        sum_after_decimal = integer_addition(fir_splited.second, sec_splited.second);
+        sum_after_decimal = decimal_addition(fir_splited.second, sec_splited.second);
 
         //combine two sums
         ans = sum_before_decimal + "." + sum_after_decimal;

@@ -16,6 +16,7 @@ namespace calculator
     bool is_a_floating_point(string);
     string floating_point_addition(string, string);
     string integer_addition(string, string);
+    string decimal_addition(string, string);
     bool if_carry(string, string);
     pair<string,string> split_flot(string);
     string reverse_addition(string, string);
@@ -132,8 +133,6 @@ string calculator::reverse_addition(string fir, string sec)
         }
     }
 
-
-
     if(carry != 0)
         ans.append(to_string(carry));
     
@@ -171,38 +170,60 @@ string calculator::integer_addition(string fir, string sec)
     return ans;
 }
 
+string calculator::decimal_addition(string fir, string sec)
+{
+    string ans;
+    int fir_length = fir.length();
+    int sec_length = sec.length();
+
+    if(fir_length == sec_length)
+        ans = integer_addition(fir,sec);
+    else
+    {
+        string biggerNum = fir_length > sec_length ? fir : sec;
+        string smallerNum = fir_length < sec_length ? fir : sec;
+
+        int maxlength = biggerNum.length();
+        int minlength = smallerNum.length();
+
+        string truncted_left_Num = biggerNum.substr(0,minlength);
+        string trunctedNum = biggerNum.substr(minlength, maxlength - minlength);
+        ans = integer_addition(truncted_left_Num, smallerNum);
+        ans.append(trunctedNum);
+    }
+    return ans;
+}
+
 // judge if two integer's addition produce a carry
 bool calculator::if_carry(string fir, string sec)
 {
-    auto max_length = max(fir.length(), sec.length());
-    
-    auto sum = integer_addition(fir, sec);
+    int maxlength = fir.length() > sec.length() ? fir.length() : sec.length();
 
-    auto sum_length = sum.length();
-    if(sum_length > max_length)
+    string ans = decimal_addition(fir, sec);
+    if(ans.length() > maxlength)
         return true;
     else
         return false;
 }
 
-// reverse a floating point
-// put the result in a pair, put the before-decimal part into the first
-// the rest into the second
+// split a floating point
+// put the result in a pair, put the integer part into the first
+// the reversed rest into the second
 pair<string, string> calculator::split_flot(string num)
 {
-    pair<string, string> reversed_num;
+    pair<string, string> splited_num;
     // judge if num is a floating point
     if(!is_a_floating_point(num))
     {
-        reversed_num.first = num;
-        reversed_num.second = "";
+        splited_num.first = num;
+        splited_num.second = "0";
     }
     
     auto decimal_pos = num.find('.');
-    reversed_num.first = num.substr(0,decimal_pos);
-    reversed_num.second = num.substr(decimal_pos + 1);
-    
-    return reversed_num;
+    splited_num.first = num.substr(0,decimal_pos);
+    splited_num.second = num.substr(decimal_pos + 1);
+
+    return splited_num;
 }
 
 // add two floating points
@@ -216,9 +237,12 @@ string calculator::floating_point_addition(string fir, string sec)
     string sum_before_decimal;
     sum_before_decimal = integer_addition(fir_split.first, sec_split.first);
 
+    //judge if decimal parts produce a carry to integer part
     if(if_carry(fir_split.second, sec_split.second))
     {
-        sum_after_decimal = integer_addition(fir_split.second, sec_split.second);
+
+        sum_after_decimal = decimal_addition(fir_split.second, sec_split.second);
+        
         sum_after_decimal.erase(0, 1);
 
         // add the carry to the sum
@@ -230,7 +254,7 @@ string calculator::floating_point_addition(string fir, string sec)
 
     else
     {
-        sum_after_decimal = integer_addition(fir_split.second, sec_split.second);
+        sum_after_decimal = decimal_addition(fir_split.second, sec_split.second);
 
         //combine two sums
         ans = sum_before_decimal + "." + sum_after_decimal;
