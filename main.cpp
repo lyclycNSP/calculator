@@ -1,7 +1,8 @@
 // a simple calculator based on command line
 #include "calculator.h"
 using namespace std;
-using namespace calculator;
+using namespace addition;
+using namespace subtraction;
 
 int main()
 {

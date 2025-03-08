@@ -9,7 +9,7 @@
 #include <utility>
 using namespace std;
 
-namespace calculator
+namespace addition
 {
     string get_num();
     string get_symbol();
@@ -21,6 +21,11 @@ namespace calculator
     pair<string,string> split_flot(string);
     string reverse_addition(string, string);
     void delete_leading_zero(string&);
+}
+
+namespace subtraction
+{
+    
 }
 
 #endif

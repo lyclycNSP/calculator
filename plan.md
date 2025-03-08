@@ -10,7 +10,18 @@
     - Handle wrong or bad-formatted inputs
 
 2. Addition
-    - Supporting up to 100 digits of operation numbers
-    - Using high-accuracy algorithms
+    - implement integer addition
+    - split floating points addition into:
+        - integer part addition
+        - decimal part addition
+            - convert decimal part addition to integer addition
+        - combine results from integer part addition and decimal part addition
+
+3. subtraction
+    - classify subtraction into 3 categories
+        1. negative minus negative -> addition
+        2. larger positive minus smaller negative
+        3. smaller positive minus larger negative -> condition 2
+
 
  
