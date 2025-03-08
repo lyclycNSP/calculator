@@ -4,15 +4,17 @@
 string calculator::get_num()
 {
     string num;
+    cout << "Enter a number: " << endl;
     getline(cin,num);
     return num;
 }
 
 // get arithmetic symbol from user
-char calculator::get_symbol()
+string calculator::get_symbol()
 {
-    char symbol;
-    cin >> symbol;
+    string symbol;
+    cout << "Enter a symbol: " << endl;
+    getline(cin,symbol);
     return symbol;
 }
 
@@ -26,7 +28,7 @@ bool calculator::is_a_floating_point(string num)
 }
 
 
-string reverse_addition(string fir, string sec)
+string calculator::reverse_addition(string fir, string sec)
 {
     string ans;
     
@@ -69,7 +71,7 @@ string reverse_addition(string fir, string sec)
             ans.append(to_string(result));
         }
     }
-    
+
     ans.append(to_string(carry));
     
     reverse(ans.begin(),ans.end());
@@ -104,11 +106,11 @@ bool calculator::if_carry(string fir, string sec)
 // reverse a floating point
 // put the result in a pair, put the before-decimal part into the first
 // the rest into the second
-pair<string, string> reverse_flot(string num)
+pair<string, string> calculator::reverse_flot(string num)
 {
     pair<string, string> reversed_num;
 
-    int decimal_pos = num.find('.');
+    auto decimal_pos = num.find('.');
     reversed_num.first = num.substr(0,decimal_pos);
     reversed_num.second = num.substr(decimal_pos + 1);
     

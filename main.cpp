@@ -9,14 +9,14 @@ int main()
     string first_num = get_num();
 
     // get the operation symbol;
-    char sym = get_symbol();
+    string sym = get_symbol();
 
     // get the second number
     string second_num = get_num();
 
     string ans;
     
-    switch(sym)
+    switch(sym[0])
     {
         case '+':
         {
@@ -27,9 +27,13 @@ int main()
             }
 
             else 
-                ans = integer_addition(first_num, second_num);break;
+            {
+                ans = integer_addition(first_num, second_num);
+                break;
+            }
         }
         default: cout << "Invalid symbol!";return -1;
     }
 
+    cout << "The result is " << ans << endl;
 }

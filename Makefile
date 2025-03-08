@@ -1,15 +1,15 @@
-CPPFLAGS = $(-Wall -Werror -pedantic -Wconversion -W-sign-conversion -std=c++23)
+CPPFLAGS = -Wall -Werror -pedantic -Wconversion -Wsign-conversion -std=c++23
 
 main:main.o calculator.o
 	g++ $(CPPFLAGS) -o main main.o calculator.o
 
-main.o:calculator.h
-	g++ $(CPPFLAGS) -c calculator.h
+calculator.o:calculator.cpp calculator.h
+	g++ $(CPPFLAGS) -c calculator.cpp
 
-calculator.o:calculator.h
-	g++ $(CPPFLAGS) -c calculator.h
+main.o:main.cpp calculator.h
+	g++ $(CPPFLAGS) -c main.cpp
 
 .PHONY:clean
 clean:
-	rm -rf *~ *.o
+	rm -rf *~ *.o main
 
