@@ -9,7 +9,7 @@ using namespace std;
 #include <utility>
 using namespace std;
 
-namespace calculator
+namespace addition
 {
     string get_num();
     string get_symbol();
@@ -22,7 +22,15 @@ namespace calculator
     string reverse_addition(string, string);
     void delete_leading_zero(string&);
 }
-using namespace calculator;
+
+namespace subtraction
+{
+
+}
+
+using namespace addition;
+using namespace subtraction;
+
 int main()
 {
     // get the first number
@@ -61,7 +69,7 @@ int main()
 
 
 // get arithmetic number from user
-string calculator::get_num()
+string addition::get_num()
 {
     string num;
     cout << "Enter a number: " << endl;
@@ -70,7 +78,7 @@ string calculator::get_num()
 }
 
 // get arithmetic symbol from user
-string calculator::get_symbol()
+string addition::get_symbol()
 {
     string symbol;
     cout << "Enter a symbol: " << endl;
@@ -79,7 +87,7 @@ string calculator::get_symbol()
 }
 
 // judge if the number is a floating point
-bool calculator::is_a_floating_point(string num)
+bool addition::is_a_floating_point(string num)
 {
     if(num.find('.') == string::npos)
         return false;
@@ -88,7 +96,7 @@ bool calculator::is_a_floating_point(string num)
 }
 
 
-string calculator::reverse_addition(string fir, string sec)
+string addition::reverse_addition(string fir, string sec)
 {
     string ans;
     
@@ -143,7 +151,7 @@ string calculator::reverse_addition(string fir, string sec)
 }
 
 // delete the leading zero of the correct result
-void calculator::delete_leading_zero(string& ans)
+void addition::delete_leading_zero(string& ans)
 {
     size_t length = ans.length();
     for(size_t i = 0; i < length; i++)
@@ -160,7 +168,7 @@ void calculator::delete_leading_zero(string& ans)
 }
 
 // add two integers
-string calculator::integer_addition(string fir, string sec)
+string addition::integer_addition(string fir, string sec)
 {
     string ans;
     reverse(fir.begin(), fir.end());
@@ -170,7 +178,7 @@ string calculator::integer_addition(string fir, string sec)
     return ans;
 }
 
-string calculator::decimal_addition(string fir, string sec)
+string addition::decimal_addition(string fir, string sec)
 {
     string ans;
     int fir_length = fir.length();
@@ -195,7 +203,7 @@ string calculator::decimal_addition(string fir, string sec)
 }
 
 // judge if two integer's addition produce a carry
-bool calculator::if_carry(string fir, string sec)
+bool addition::if_carry(string fir, string sec)
 {
     int maxlength = fir.length() > sec.length() ? fir.length() : sec.length();
 
@@ -209,7 +217,7 @@ bool calculator::if_carry(string fir, string sec)
 // split a floating point
 // put the result in a pair, put the integer part into the first
 // the reversed rest into the second
-pair<string, string> calculator::split_flot(string num)
+pair<string, string> addition::split_flot(string num)
 {
     pair<string, string> splited_num;
     // judge if num is a floating point
@@ -227,7 +235,7 @@ pair<string, string> calculator::split_flot(string num)
 }
 
 // add two floating points
-string calculator::floating_point_addition(string fir, string sec)
+string addition::floating_point_addition(string fir, string sec)
 {
     string ans;
     auto fir_split = split_flot(fir);
