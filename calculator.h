@@ -2,6 +2,7 @@
 #define CALCULATE_H
 
 #include <algorithm>
+#include <cstdlib>
 #include <cmath>
 #include <string>
 #include <iostream>

@@ -19,7 +19,7 @@ char calculator::get_symbol()
 // judge if the number is a floating point
 bool calculator::is_a_floating_point(string num)
 {
-    if(find(num.begin(), num.end(),'.') == num.end())
+    if(num.find('.') == string::npos)
         return false;
     else 
         return true;
@@ -28,7 +28,52 @@ bool calculator::is_a_floating_point(string num)
 
 string reverse_addition(string fir, string sec)
 {
+    string ans;
     
+    int carry{};  //the carry produced by every two digit'sum
+    int result{}; //the number minus carry from the sum
+    size_t length_fir = fir.length();
+    size_t length_sec = sec.length();
+    auto min_length = min(length_fir, length_sec);
+
+    size_t index{};
+    for(;index < min_length; index++)
+    {
+        int sum = atoi(&fir[index]) + atoi(&sec[index]) + carry;
+        carry = sum % 10;
+        result = sum / 10;
+        
+        ans.append(to_string(result));
+    }
+    
+    if(index != length_fir)
+    {
+        for( ;index < length_fir; index++)
+        {
+            int sum = atoi(&fir[index]) + carry;
+            carry = sum % 10;
+            result = sum / 10;
+
+            ans.append(to_string(result));
+        }
+    }
+
+    else if(index != length_sec)
+    {
+        for( ;index < length_sec; index++)
+        {
+            int sum = atoi(&sec[index]) + carry;
+            carry = sum % 10;
+            result = sum / 10;
+
+            ans.append(to_string(result));
+        }
+    }
+    
+    ans.append(to_string(carry));
+    
+    reverse(ans.begin(),ans.end());
+    return ans;
 }
 
 // add two integers
@@ -63,7 +108,11 @@ pair<string, string> reverse_flot(string num)
 {
     pair<string, string> reversed_num;
 
+    int decimal_pos = num.find('.');
+    reversed_num.first = num.substr(0,decimal_pos);
+    reversed_num.second = num.substr(decimal_pos + 1);
     
+    return reversed_num;
 }
 
 // add two floating points
@@ -82,7 +131,6 @@ string calculator::floating_point_addition(string fir, string sec)
         sum_after_decimal = reverse_addition(fir_rev.second, sec_rev.second);
         sum_after_decimal.erase(0, 1);
 
-        
         // add the carry to the sum
         sum_before_decimal = integer_addition(sum_before_decimal, "1");
 
