@@ -134,3 +134,24 @@ int calculator::which_is_bigger(string fir, string sec)
         return 0;
     }
 }
+
+// this function judge which decimal part is bigger
+// return 1 for fir > sec
+// return -1 for fir < sec
+// return 0 for fir = sec
+int calculator::which_dec_is_bigger(string fir, string sec)
+{
+    size_t fir_length = fir.length();
+    size_t sec_length = sec.length();
+
+    size_t minlength = fir_length < sec_length ? fir_length : sec_length;
+
+    for(size_t i{}; i < minlength; i++)
+    {
+        if(fir[i] > sec[i])
+            return 1;
+        else if(fir[i] < sec[i])
+            return -1;
+    }
+    return 0;
+}

@@ -65,6 +65,7 @@ string addition::integer_addition(string fir, string sec)
     return ans;
 }
 
+// handle the decimal part addition of the two numbers
 string addition::decimal_addition(string fir, string sec)
 {
     string ans;

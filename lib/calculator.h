@@ -22,6 +22,7 @@ namespace calculator
     bool is_neg(string);
     void to_absolute(string&);
     int which_is_bigger(string, string);
+    int which_dec_is_bigger(string, string);
 }
 
 
