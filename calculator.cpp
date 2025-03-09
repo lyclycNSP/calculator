@@ -3,6 +3,7 @@
 // get arithmetic number from user
 string addition::get_num()
 {
+    cin.sync();
     string num;
     cout << "Enter a number: " << endl;
     getline(cin,num);
@@ -10,11 +11,24 @@ string addition::get_num()
 }
 
 // get arithmetic symbol from user
-string addition::get_symbol()
+char addition::get_symbol()
 {
-    string symbol;
-    cout << "Enter a symbol: " << endl;
-    getline(cin,symbol);
+    cout << "Valid symbols includes '+' "<< endl;
+    cout << "Enter a symbol:" << endl;
+    char symbol;
+    while(1)
+    {
+        cin >> symbol;
+        if(symbol != '+')
+        {
+            cout << "Please enter a valid symbol" << endl;
+            cin.clear();
+            cin.ignore(1, EOF);
+        }
+        else
+            break;
+    }
+    cin.ignore(1, EOF);
     return symbol;
 }
 

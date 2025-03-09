@@ -12,7 +12,7 @@ using namespace std;
 namespace addition
 {
     string get_num();
-    string get_symbol();
+    char get_symbol();
     bool is_a_floating_point(string);
     string floating_point_addition(string, string);
     string integer_addition(string, string);

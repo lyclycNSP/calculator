@@ -10,14 +10,14 @@ int main()
     string first_num = get_num();
 
     // get the operation symbol;
-    string sym = get_symbol();
+    char symbol = get_symbol();
 
     // get the second number
     string second_num = get_num();
 
     string ans;
     
-    switch(sym[0])
+    switch(symbol)
     {
         case '+':
         {
