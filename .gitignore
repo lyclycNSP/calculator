@@ -1,7 +1,10 @@
-.md
-.vscode
-.o
-main
-full
-## whitelist
+*.md
 !README.md
+
+.vscode
+
+*.o
+
+main
+
+full
