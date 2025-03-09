@@ -7,25 +7,21 @@
 #include <string>
 #include <iostream>
 #include <utility>
+#include <ctype.h>
+
 using namespace std;
 
-namespace addition
+namespace calculator
 {
     string get_num();
     char get_symbol();
     bool is_a_floating_point(string);
-    string floating_point_addition(string, string);
-    string integer_addition(string, string);
-    string decimal_addition(string, string);
     bool if_carry(string, string);
     pair<string,string> split_flot(string);
-    string reverse_addition(string, string);
     void delete_leading_zero(string&);
+    bool is_neg(string);
+    void to_absolute(string&);
 }
 
-namespace subtraction
-{
-    
-}
 
 #endif
