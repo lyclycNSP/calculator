@@ -21,6 +21,7 @@ namespace calculator
     void delete_leading_zero(string&);
     bool is_neg(string);
     void to_absolute(string&);
+    int which_is_bigger(string, string);
 }
 
 

@@ -4,11 +4,11 @@
 // if not the case, perform equivalent conversion to other case
 // so the functions can be used repeatedly
 
-#include "calculator.h"
-#include "addition.h"
-#include "subtraction.h"
-#include "multiplication.h"
-#include "division.h"
+#include "lib/calculator.h"
+#include "lib/addition.h"
+#include "lib/subtraction.h"
+#include "lib/multiplication.h"
+#include "lib/division.h"
 
 using namespace std;
 using namespace calculator;
@@ -96,9 +96,13 @@ int main()
                     else 
                         ans = integer_addition(first_num, second_num);
                     
-                    // the final ans should be negative
-                    ans.insert(ans.begin(), '-');
+                    // the final ans should be the return value's negative
+                    if(ans.at(0) == '-')
+                        ans.erase(0, 1);
+                    else 
+                        ans.insert(ans.begin(), '-');
                     break;
+
                 }
                 default: ans = "Bug:the switch case fall into default";break;
             }
@@ -153,8 +157,13 @@ int main()
                     
                     else 
                         ans = integer_addition(first_num, second_num);
+                        
+                    // the final ans should be the return value's negative
+                    if(ans.at(0) == '-')
+                        ans.erase(0, 1);
+                    else 
+                        ans.insert(ans.begin(), '-');
 
-                    ans.insert(ans.begin(), '-');
                     break;
                 }
 

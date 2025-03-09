@@ -1,5 +1,5 @@
-#include "calculator.h"
-#include "addition.h"
+#include "lib/calculator.h"
+#include "lib/addition.h"
 // get arithmetic number from user
 string calculator::get_num()
 {
@@ -110,7 +110,27 @@ void calculator::to_absolute(string& fir)
     return;
 }
 
+// return 1 for fir > sec
+// return -1 for fir < sec
+// return 0 for fir = sec
+int calculator::which_is_bigger(string fir, string sec)
+{
+    size_t fir_length = fir.length();
+    size_t sec_length = sec.length();
 
-
-
-
+    if(fir_length > sec_length)
+        return 1;
+    else if(fir_length < sec_length)
+        return -1;
+    else
+    {
+        for(size_t i{}; i < fir_length; i++)
+        {
+            if(fir[i] > sec[i])
+                return 1;
+            else if(fir[i] < sec[i])
+                return -1;
+        }
+        return 0;
+    }
+}
