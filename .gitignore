@@ -5,6 +5,6 @@
 
 *.o
 
-main
+test
 
-full
+build/full
