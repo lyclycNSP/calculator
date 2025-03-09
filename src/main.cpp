@@ -4,11 +4,11 @@
 // if not the case, perform equivalent conversion to other case
 // so the functions can be used repeatedly
 
-#include "lib/calculator.h"
-#include "lib/addition.h"
-#include "lib/subtraction.h"
-#include "lib/multiplication.h"
-#include "lib/division.h"
+#include "../lib/calculator.h"
+#include "../lib/addition.h"
+#include "../lib/subtraction.h"
+#include "../lib/multiplication.h"
+#include "../lib/division.h"
 
 using namespace std;
 using namespace calculator;
@@ -23,7 +23,7 @@ int main()
     string first_num = get_num();
 
     // get the operation symbol;
-    char symbol = get_symbol();
+    string symbol = get_symbol();
 
     // get the second number
     string second_num = get_num();
@@ -37,12 +37,12 @@ int main()
     //classify addition and subtraction into a few categories
     
     
-    if(symbol == '+' or symbol == '-')
+    if(symbol[0] == '+' or symbol[0] == '-')
     {
         //first: both numbers are positive 
         if(!is_first_num_neg and !is_sec_num_neg)
         {
-            switch(symbol)
+            switch(symbol[0])
             {
                 case '+':
                 {
@@ -73,7 +73,7 @@ int main()
         else if(is_first_num_neg and !is_sec_num_neg)
         {
             to_absolute(first_num);
-            switch(symbol)
+            switch(symbol[0])
             {
                 // this case is equivalent to sec - abs(fir)
                 case '+':
@@ -112,7 +112,7 @@ int main()
         else if(!is_first_num_neg and is_sec_num_neg)
         {
             to_absolute(second_num);
-            switch(symbol)
+            switch(symbol[0])
             {
                 //this case is equivalent to fir - abs(sec)
                 case '+':
@@ -147,7 +147,7 @@ int main()
         {
             to_absolute(first_num);
             to_absolute(second_num);
-            switch(symbol)
+            switch(symbol[0])
             {
                 // this case is equivalent to -(abs(fir) + abs(sec))
                 case '+':
@@ -185,71 +185,71 @@ int main()
     }
     
     // multiplication and division don't care about the signs when calculating
-    else if(symbol == '*' or symbol == '/')
-    {
-        to_absolute(first_num);
-        to_absolute(second_num);
-        if(is_first_num_neg == is_sec_num_neg)
-        {
-            switch(symbol)
-            {
-                case '*':
-                {
-                    if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
-                        ans = floating_point_multiplication(first_num, second_num);
+    // else if(symbol == '*' or symbol == '/')
+    // {
+    //     to_absolute(first_num);
+    //     to_absolute(second_num);
+    //     if(is_first_num_neg == is_sec_num_neg)
+    //     {
+    //         switch(symbol)
+    //         {
+    //             case '*':
+    //             {
+    //                 if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
+    //                     ans = floating_point_multiplication(first_num, second_num);
                     
-                    else
-                        ans = integer_multiplication(first_num, second_num);
-                }
+    //                 else
+    //                     ans = integer_multiplication(first_num, second_num);
+    //             }
 
-                case '/':
-                {
-                    if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
-                        ans = floating_point_division(first_num, second_num);
+    //             case '/':
+    //             {
+    //                 if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
+    //                     ans = floating_point_division(first_num, second_num);
                     
-                    else
-                        ans = integer_division(first_num, second_num);
+    //                 else
+    //                     ans = integer_division(first_num, second_num);
                     
-                    break;
-                }
+    //                 break;
+    //             }
 
-                default: ans = "Bug:the switch case fall into default";break;
-            }
-        }
+    //             default: ans = "Bug:the switch case fall into default";break;
+    //         }
+    //     }
 
-        else
-        {
-            if(is_first_num_neg != is_sec_num_neg)
-            {
-                switch(symbol)
-                {
-                    case '*':
-                    {
-                        if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
-                            ans = floating_point_multiplication(first_num, second_num);
+    //     else
+    //     {
+    //         if(is_first_num_neg != is_sec_num_neg)
+    //         {
+    //             switch(symbol)
+    //             {
+    //                 case '*':
+    //                 {
+    //                     if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
+    //                         ans = floating_point_multiplication(first_num, second_num);
                         
-                        else 
-                            ans = integer_multiplication(first_num, second_num);
+    //                     else 
+    //                         ans = integer_multiplication(first_num, second_num);
                         
-                        break;
-                        }
+    //                     break;
+    //                     }
                         
-                        case '/':
-                        {
-                            if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
-                                ans = floating_point_division(first_num, second_num);
+    //                     case '/':
+    //                     {
+    //                         if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
+    //                             ans = floating_point_division(first_num, second_num);
                             
-                            else
-                                ans = integer_division(first_num, second_num);
+    //                         else
+    //                             ans = integer_division(first_num, second_num);
                             
-                            break;
-                        }
-                        default: ans = "Bug:the switch case fall into default";break;
-                    }
-                }
-                ans.insert(ans.begin(), '-');
-            }
-    }
+    //                         break;
+    //                     }
+    //                     default: ans = "Bug:the switch case fall into default";break;
+    //                 }
+    //             }
+    //             ans.insert(ans.begin(), '-');
+    //         }
+    // }
      
     cout << "The result is " << ans << endl;
 }

@@ -1,5 +1,5 @@
-#include "lib/addition.h"
-#include "lib/calculator.h"
+#include "../lib/addition.h"
+#include "../lib/calculator.h"
 
 // apply addition to two reversed integer
 string addition::reverse_addition(string fir, string sec)

@@ -1,5 +1,5 @@
-#include "lib/calculator.h"
-#include "lib/subtraction.h"
+#include "../lib/calculator.h"
+#include "../lib/subtraction.h"
 
 // inside main, where this function is called, both numbers are preserved to be positive
 // whereever this function is called, make sure that the numbers passed in are positive
@@ -170,6 +170,7 @@ string subtraction::decimal_subtraction(string fir, string sec)
         ans = bigger_dec_minus_sml_dec(sec, fir);
         ans.insert(ans.begin(), '-');    
     }
+    return ans;
 }
 
 // this function handles a bigger decimal fir minus smaller decimal sec
@@ -183,11 +184,11 @@ string subtraction::bigger_dec_minus_sml_dec(string fir, string sec)
     size_t sec_length = sec.length();
 
     if(fir_length > sec_length)
-        sec.append('0', fir_length - sec_length);
+        sec.append(fir_length - sec_length, '0');
     else
-        fir.append('0', sec_length - fir_length);
+        fir.append(sec_length - fir_length, '0');
 
-    ans = integer_subtraction(fir, sec);
+    ans = subtraction::integer_subtraction(fir, sec);
     return ans;
 }
 

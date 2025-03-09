@@ -14,7 +14,7 @@ using namespace std;
 namespace calculator
 {
     string get_num();
-    char get_symbol();
+    string get_symbol();
     bool is_a_floating_point(string);
     bool if_carry(string, string);
     pair<string,string> split_flot(string);

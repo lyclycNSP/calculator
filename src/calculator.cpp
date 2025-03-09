@@ -1,5 +1,5 @@
-#include "lib/calculator.h"
-#include "lib/addition.h"
+#include "../lib/calculator.h"
+#include "../lib/addition.h"
 // get arithmetic number from user
 string calculator::get_num()
 {
@@ -15,24 +15,25 @@ string calculator::get_num()
 }
 
 // get arithmetic symbol from user
-char calculator::get_symbol()
+string calculator::get_symbol()
 {
-    cout << "Valid symbols includes '+' "<< endl;
-    cout << "Enter a symbol:" << endl;
-    char symbol;
-    while(1)
-    {
-        cin >> symbol;
-        if(symbol != '+')
-        {
-            cout << "Please enter a valid symbol" << endl;
-            cin.clear();
-            cin.ignore(1, EOF);
-        }
-        else
-            break;
-    }
-    cin.ignore(1, EOF);
+    cout << "Valid symbols includes '+' '-" << endl;
+    cout << "Enter a symbol: " << endl;
+    string symbol;
+    // while(1)
+    // {
+    //     cin >> symbol;
+    //     if(symbol != '+' or symbol != '-')
+    //     {
+    //         cout << "Please enter a valid symbol" << endl;
+    //         cin.clear();
+    //         cin.ignore(1, EOF);
+    //     }
+    //     else
+    //         break;
+    // }
+    // cin.ignore(1, EOF);
+    getline(cin, symbol);
     return symbol;
 }
 
@@ -51,7 +52,7 @@ void calculator::delete_leading_zero(string& ans)
     size_t length = ans.length();
     for(size_t i = 0; i < length; i++)
     {
-        if(ans[i] != 0)
+        if(ans[i] != '0')
             break;
         else
         {
@@ -85,6 +86,7 @@ pair<string, string> calculator::split_flot(string num)
     {
         splited_num.first = num;
         splited_num.second = "0";
+        return splited_num;
     }
     auto decimal_pos = num.find('.');
     splited_num.first = num.substr(0,decimal_pos);
