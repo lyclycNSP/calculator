@@ -179,6 +179,7 @@ int calculator::which_dec_is_bigger(string fir, string sec)
             else 
                 return -1;
         }
+        i++;
     }
     return 0;
 }
