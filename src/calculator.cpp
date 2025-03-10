@@ -4,7 +4,7 @@
 // get arithmetic number from user
 string calculator::get_num()
 {
-    cin.sync();
+    cout << endl;
     string num;
     cout << "Warning: invalid input will be identified as zero" << endl;
     cout << "Enter a number: " << endl;
@@ -18,6 +18,7 @@ string calculator::get_num()
 // get arithmetic symbol from user
 string calculator::get_symbol()
 {
+    cout << endl;
     cout << "Valid symbols includes '+' '-" << endl;
     cout << "Enter a symbol: " << endl;
     string symbol;

@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <string>
+#include <cstdio>
 #include <iostream>
 #include <utility>
 #include <ctype.h>
@@ -13,6 +14,8 @@ using namespace std;
 
 namespace calculator
 {
+    string calculation(string, string, string);
+    
     string get_num();
     string get_symbol();
     bool is_a_floating_point(string);
