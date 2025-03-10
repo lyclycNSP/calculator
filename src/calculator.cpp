@@ -1,5 +1,6 @@
 #include "../lib/calculator.h"
 #include "../lib/addition.h"
+
 // get arithmetic number from user
 string calculator::get_num()
 {
@@ -50,6 +51,8 @@ bool calculator::is_a_floating_point(string num)
 void calculator::delete_leading_zero(string& ans)
 {
     size_t length = ans.length();
+    if(length == 1) // if there is only a zero, don't delete it
+        return;
     for(size_t i = 0; i < length; i++)
     {
         if(ans[i] != '0')
@@ -146,14 +149,48 @@ int calculator::which_dec_is_bigger(string fir, string sec)
     size_t fir_length = fir.length();
     size_t sec_length = sec.length();
 
-    size_t minlength = fir_length < sec_length ? fir_length : sec_length;
+    string longstr = fir_length > sec_length ? fir : sec;
+    string shortstr = fir_length < sec_length ? fir : sec;
+    size_t maxlength = longstr.length();
+    size_t minlength = shortstr.length();
 
-    for(size_t i{}; i < minlength; i++)
+    size_t i{};
+    for(; i < minlength; i++)
     {
         if(fir[i] > sec[i])
             return 1;
         else if(fir[i] < sec[i])
             return -1;
     }
+    while(i < maxlength)
+    {
+        if(longstr[i] != '0')
+        {
+            if(longstr == fir)
+                return 1;
+            else 
+                return -1;
+        }
+    }
     return 0;
+}
+
+// this function gets the significant digits of a decimal part
+// return 1 for all zero or only one siginificant digit
+size_t calculator::get_significant_digits_of_dec(string num)
+{
+    size_t length = num.length();
+    if(length == 1)
+        return 1;
+
+    int index = static_cast<int>(length) - 1;
+    for(; index >= 0; index--)
+    {
+        if(num[index] != 0)
+            break;
+    }
+    if(index == -1)
+        return 1;
+    else
+        return index + 1;
 }

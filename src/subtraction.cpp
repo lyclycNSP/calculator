@@ -72,7 +72,7 @@ string subtraction::reverse_subtraction(string fir, string sec)
         i++;
     }
     reverse(ans.begin(), ans.end());
-    calculator::delete_leading_zero(ans);
+    // calculator::delete_leading_zero(ans);
 
     return ans;
 }
@@ -88,6 +88,8 @@ string subtraction::floating_point_subtraction(string fir, string sec)
 
     
     auto diff_before_decimal = integer_subtraction(splited_fir.first, splited_sec.first);
+    calculator::delete_leading_zero(ans);
+
     auto diff_after_decimal = decimal_subtraction(splited_fir.second, splited_sec.second);
 
     bool int_pt_neg = calculator::is_neg(diff_before_decimal);
@@ -111,13 +113,20 @@ string subtraction::floating_point_subtraction(string fir, string sec)
         {
             // borrow 1 from the integer part
             diff_before_decimal = integer_subtraction(diff_before_decimal, "1");
+            calculator::delete_leading_zero(diff_before_decimal);
 
-            // remove the sign before the string
+            // remove the sign before the string    
             diff_after_decimal.erase(0, 1);
 
-            // 1 borrow from units should be ten in tenth place
-            // the result must be positive
-            diff_after_decimal = integer_subtraction("10", diff_after_decimal);
+            
+            string borrow = "1";
+            // to know how many zero should be appended to borrow to complete the subtraction
+            size_t size = calculator::get_significant_digits_of_dec(diff_after_decimal);
+            borrow.append(size, '0');
+
+            diff_after_decimal = integer_subtraction(borrow, diff_after_decimal);
+            // the leading zero should be deleted
+            diff_after_decimal.erase(0, 1);
 
             ans = diff_before_decimal + "." + diff_after_decimal;
         }
@@ -134,8 +143,16 @@ string subtraction::floating_point_subtraction(string fir, string sec)
         // the absolute value of integer part should minus one
         diff_before_decimal.erase(0, 1);
         diff_before_decimal = integer_subtraction(diff_before_decimal, "1");
+        calculator::delete_leading_zero(diff_before_decimal);
 
-        diff_after_decimal = integer_subtraction("10", diff_after_decimal);
+        string borrow = "1";
+        // to know how many zero should be appended to borrow to complete the subtraction
+        size_t size = calculator::get_significant_digits_of_dec(diff_after_decimal);
+        borrow.append(size, '0');
+        
+        diff_after_decimal = integer_subtraction(borrow, diff_after_decimal);
+        // the leading zero should be deleted
+        diff_after_decimal.erase(0, 1);
 
         diff_before_decimal.insert(diff_before_decimal.begin(), '-');
         ans = diff_before_decimal + "." + diff_after_decimal;
@@ -191,6 +208,3 @@ string subtraction::bigger_dec_minus_sml_dec(string fir, string sec)
     ans = subtraction::integer_subtraction(fir, sec);
     return ans;
 }
-
-
-

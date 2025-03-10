@@ -1,4 +1,4 @@
-CXXFLAGS = -Wall -Werror -pedantic -Wconversion -Wsign-conversion -std=c++23
+CXXFLAGS = -Wall -Werror -pedantic -Wconversion -std=c++23
 CPPFLAGS = -Ilib
 
 SRC_DIR = src

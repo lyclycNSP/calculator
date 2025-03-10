@@ -23,7 +23,7 @@ namespace calculator
     void to_absolute(string&);
     int which_is_bigger(string, string);
     int which_dec_is_bigger(string, string);
+    size_t get_significant_digits_of_dec(string);
 }
-
 
 #endif

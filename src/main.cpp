@@ -61,8 +61,10 @@ int main()
                         ans = floating_point_subtraction(first_num, second_num);
 
                     else
+                    {
                         ans = integer_subtraction(first_num, second_num);
-
+                        calculator::delete_leading_zero(ans);   
+                    }
                     break;
                 }
                 default: ans = "Bug:the switch case fall into default";
@@ -82,8 +84,10 @@ int main()
                         ans = floating_point_subtraction(second_num, first_num);
 
                     else 
+                    {
                         ans = integer_subtraction(second_num, first_num);
-
+                        calculator::delete_leading_zero(ans);
+                    }
                     break;
                 }
 
@@ -121,8 +125,10 @@ int main()
                         ans = floating_point_subtraction(first_num, second_num);
                 
                     else
+                    {
                         ans = integer_subtraction(first_num, second_num);
-
+                        calculator::delete_leading_zero(ans);
+                    }    
                     break;
                 }
 
@@ -174,8 +180,10 @@ int main()
                         ans = floating_point_subtraction(second_num, first_num);
                     
                     else
+                    {
                         ans = integer_subtraction(second_num, first_num);
-
+                        calculator::delete_leading_zero(ans);
+                    }
                     break;
                 }
 
