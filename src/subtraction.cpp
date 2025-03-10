@@ -88,7 +88,7 @@ string subtraction::floating_point_subtraction(string fir, string sec)
 
     
     auto diff_before_decimal = integer_subtraction(splited_fir.first, splited_sec.first);
-    calculator::delete_leading_zero(ans);
+    calculator::delete_leading_zero(diff_before_decimal);
 
     auto diff_after_decimal = decimal_subtraction(splited_fir.second, splited_sec.second);
 
