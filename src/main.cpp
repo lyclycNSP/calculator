@@ -19,7 +19,11 @@ using namespace division;
 
 int main()
 {
-    cout << "a simple calculator, enter q to quit, enter any other to continue" << endl;
+    cout << "a simple calculator" << endl;
+    cout << "enter 'q' to quit" << endl;
+    cout << "enter other characters to continue" << endl;
+    cout << "WARNING: you could enter ONLY ONE CHARACTER or unexpected error will occur" << endl;
+    
     int flag{};
     flag = cin.get();
     // flush the enter in buffer
