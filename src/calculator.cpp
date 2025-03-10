@@ -52,9 +52,14 @@ bool calculator::is_a_floating_point(string num)
 void calculator::delete_leading_zero(string& ans)
 {
     size_t length = ans.length();
+    size_t i = 0;
+
     if(length == 1) // if there is only a zero, don't delete it
         return;
-    for(size_t i = 0; i < length; i++)
+    else if(ans[0] == '-')
+        i = 1;
+        
+    for(; i < length; i++)
     {
         if(ans[i] == '-')
             continue;
