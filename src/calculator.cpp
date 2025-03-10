@@ -56,6 +56,8 @@ void calculator::delete_leading_zero(string& ans)
         return;
     for(size_t i = 0; i < length; i++)
     {
+        if(ans[i] == '-')
+            continue;
         if(ans[i] != '0')
             break;
         else
