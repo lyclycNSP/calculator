@@ -203,3 +203,51 @@ size_t calculator::get_significant_digits_of_dec(string num)
     else
         return index + 1;
 }
+
+//this function calculate how many numbers digits of the decimal places offset
+size_t calculator::numbers_of_dec_offset(string num)
+{
+    return 1;
+}
+
+// this function count a number's digits excluding '-' and '.'
+size_t calculator::count_digits(string num)
+{
+    size_t length = num.length();
+
+    // judge if there is a '-' in the string
+    if(num.find('-') != string::npos)
+        length--;
+
+    // judge if there is a '.' in the string
+    if(num.find('.') != string::npos)
+        length--;
+
+    return 1;
+}
+
+// this function format the answer based on the parameter
+void calculator::formatted_output(string& ans, char method)
+{
+    switch(method)
+    {
+        case 'r':
+            return;
+
+        case 'e':
+        {
+            if(is_a_floating_point(ans) and numbers_of_dec_offset(ans))
+                return;
+
+            
+        }
+        
+        default:return;
+    }
+}
+
+void calculator::e_method(string& ans)
+{
+    
+}
+

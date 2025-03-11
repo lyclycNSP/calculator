@@ -26,6 +26,12 @@ namespace calculator
     int which_is_bigger(string, string);
     int which_dec_is_bigger(string, string);
     size_t get_significant_digits_of_dec(string);
+    size_t count_digits(string);
+    size_t numbers_of_dec_offset(string);
+
+    void formatted_output(string&, char = 'e');
+
+    void e_method(string&);
 }
 
 #endif
