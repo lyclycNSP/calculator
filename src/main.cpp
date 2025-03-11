@@ -31,12 +31,15 @@ int main()
     cin.ignore();
     while(flag != 'q')
     {
+        // get the output method
+        string method = get_method();
+        
         // get the first number
         string first_num = get_num();
-
+        
         // get the operation symbol;
         string symbol = get_symbol();
-
+        
         // get the second number
         string second_num = get_num();
 
@@ -45,7 +48,7 @@ int main()
         string ans;
 
         //classify addition and subtraction into a few categories
-        ans = calculation(first_num, second_num, symbol);
+        ans = calculation(first_num, second_num, symbol, method[0]);
 
         cout << "The result is " << ans << endl;
         cout << endl;

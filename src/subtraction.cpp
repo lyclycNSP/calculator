@@ -134,6 +134,7 @@ string subtraction::floating_point_subtraction(string fir, string sec)
         {
             diff_after_decimal.erase(0, 1);
             ans = diff_before_decimal + "." + diff_after_decimal;
+            ans.insert(ans.begin(), '-');
         }
     }
     

@@ -15,6 +15,16 @@ string calculator::get_num()
         return num;
 }
 
+string calculator::get_method()
+{
+    cout << endl;
+    string method;
+    cout << "Choose a method to display result" << endl;
+    cout << "'e' for e_method, 'r' for ordinary_method" << endl;
+    getline(cin, method);
+    return method;
+}
+
 // get arithmetic symbol from user
 string calculator::get_symbol()
 {
@@ -185,6 +195,7 @@ int calculator::which_dec_is_bigger(string fir, string sec)
 }
 
 // this function gets the significant digits of a decimal part
+// in order to apply decimal part addition
 // return 1 for all zero or only one siginificant digit
 size_t calculator::get_significant_digits_of_dec(string num)
 {
@@ -204,50 +215,147 @@ size_t calculator::get_significant_digits_of_dec(string num)
         return index + 1;
 }
 
-//this function calculate how many numbers digits of the decimal places offset
+//this function calculate how many numbers digits of the decimal places offset in string
+// return a negative number indicates the decimal places offset to left
+// return a positive number indicates the decimal places offset to right
+// return zero when it doesn't offset
+// the absolute value of the return value is the offset digits
 size_t calculator::numbers_of_dec_offset(string num)
 {
-    return 1;
+    size_t offset{};
+
+    // integers
+    if(!is_a_floating_point(num))
+        offset = count_digits(num) - 1;
+
+    // floating points
+    else
+    {
+        to_absolute(num);
+
+        auto splited_num = split_flot(num);
+
+        // deciding offset_num based on the integer part
+        size_t integer_digits = count_digits(splited_num.first);
+
+        if(integer_digits != 1)
+            offset = integer_digits - 1;
+            
+        else
+        {
+            if(splited_num.first[0] == '0')
+                offset = -1;
+            
+            else
+                offset = 0;
+        }
+    }
+
+    return offset;
 }
 
-// this function count a number's digits excluding '-' and '.'
+// this function count a number's digits excluding sign and decimal point
 size_t calculator::count_digits(string num)
 {
-    size_t length = num.length();
+    to_absolute(num);
 
-    // judge if there is a '-' in the string
-    if(num.find('-') != string::npos)
-        length--;
-
-    // judge if there is a '.' in the string
-    if(num.find('.') != string::npos)
-        length--;
-
-    return 1;
+    size_t digits = num.length();
+    
+    if(is_a_floating_point(num))
+        digits--;
+    
+    return digits;
 }
 
 // this function format the answer based on the parameter
-void calculator::formatted_output(string& ans, char method)
+string calculator::formatted_output(string ans, char method)
 {
+    if(ans == "0.0" or ans == "0")
+        return "0";
+
+    
+    string modified_ans{ans};
     switch(method)
     {
         case 'r':
-            return;
+            return modified_ans;
 
         case 'e':
         {
-            if(is_a_floating_point(ans) and numbers_of_dec_offset(ans))
-                return;
-
+            size_t offset = numbers_of_dec_offset(ans);
             
+            modified_ans = e_method(ans, offset);
+            return modified_ans;
         }
-        
-        default:return;
+
+        default:return modified_ans;
     }
 }
 
-void calculator::e_method(string& ans)
+// this function format a number into e_method
+string calculator::e_method(string ans, size_t offset)
 {
-    
+    string e_suffix = "E" + to_string(offset);
+    if(offset == 0)
+    {
+        ans.append(e_suffix);
+        return ans;
+    }
+
+    if(!is_a_floating_point(ans))
+    {
+        // positive
+        if(!is_neg(ans))
+            ans.insert(ans.begin() + 1, '.');
+            
+        else
+            ans.insert(ans.begin() + 2, '.');
+            
+    }
+
+    else
+    {
+        //negative
+        if(is_neg(ans))
+        {
+            if(offset < 0)
+            {
+                // remove the zero in integer part and decimal point
+                ans.erase(1, 2);
+
+                if(ans.length() != 2)
+                    ans.insert(ans.begin() + 2, '.');
+            }
+            
+            else if(offset > 0)
+            {
+                auto dec_point_pos = ans.find('.');
+                ans.erase(dec_point_pos, 1);
+                ans.insert(ans.begin() + 2, '.');
+            }
+        }
+
+        // positive
+        else
+        {
+            if(offset < 0)
+            {
+                ans.erase(0, 2);
+
+                if(ans.length() != 1)
+                    ans.insert(ans.begin() + 1, '.');
+            }
+
+            else if(offset > 0)
+            {
+                auto dec_point_pos = ans.find('.');
+                ans.erase(dec_point_pos, 1);
+                ans.insert(ans.begin() + 1, '.');
+            }
+        }
+    }
+    ans.append(e_suffix);
+
+    return ans;
 }
 
