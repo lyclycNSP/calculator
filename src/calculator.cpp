@@ -220,9 +220,9 @@ size_t calculator::get_significant_digits_of_dec(string num)
 // return a positive number indicates the decimal places offset to right
 // return zero when it doesn't offset
 // the absolute value of the return value is the offset digits
-size_t calculator::numbers_of_dec_offset(string num)
+long long calculator::numbers_of_dec_offset(string num)
 {
-    size_t offset{};
+    long long offset{};
 
     // integers
     if(!is_a_floating_point(num))
@@ -293,67 +293,44 @@ string calculator::formatted_output(string ans, char method)
 }
 
 // this function format a number into e_method
-string calculator::e_method(string ans, size_t offset)
+string calculator::e_method(string ans, long long offset)
 {
     string e_suffix = "E" + to_string(offset);
-    if(offset == 0)
-    {
-        ans.append(e_suffix);
-        return ans;
-    }
+    bool is_nega = is_neg(ans);
 
-    if(!is_a_floating_point(ans))
+    // transform all the number to positive to simplify logic
+    if(is_nega)
+        to_absolute(ans);
+        
+    if(!is_nega)
     {
-        // positive
-        if(!is_neg(ans))
+        if(ans.length() != 1)
             ans.insert(ans.begin() + 1, '.');
-            
-        else
-            ans.insert(ans.begin() + 2, '.');
-            
     }
-
-    else
+    else 
     {
-        //negative
-        if(is_neg(ans))
+        auto splited_num = split_flot(ans);
+
+        if(splited_num.first.length() == 1)
         {
-            if(offset < 0)
+            if(splited_num.first[0] == '0')
             {
-                // remove the zero in integer part and decimal point
-                ans.erase(1, 2);
-
-                if(ans.length() != 2)
-                    ans.insert(ans.begin() + 2, '.');
-            }
-            
-            else if(offset > 0)
-            {
-                auto dec_point_pos = ans.find('.');
-                ans.erase(dec_point_pos, 1);
-                ans.insert(ans.begin() + 2, '.');
-            }
-        }
-
-        // positive
-        else
-        {
-            if(offset < 0)
-            {
-                ans.erase(0, 2);
-
+                ans = splited_num.second;
                 if(ans.length() != 1)
                     ans.insert(ans.begin() + 1, '.');
             }
-
-            else if(offset > 0)
-            {
-                auto dec_point_pos = ans.find('.');
-                ans.erase(dec_point_pos, 1);
-                ans.insert(ans.begin() + 1, '.');
-            }
+        }
+        else
+        {
+            ans = splited_num.first;
+            ans.insert(ans.begin() + 1, '.');
+            ans.append(splited_num.second);
         }
     }
+    
+    if(is_nega)
+        ans.insert(ans.begin(), '-');
+
     ans.append(e_suffix);
 
     return ans;

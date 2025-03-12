@@ -28,11 +28,11 @@ namespace calculator
     int which_dec_is_bigger(string, string);
     size_t get_significant_digits_of_dec(string);
     size_t count_digits(string);
-    size_t numbers_of_dec_offset(string);
+    long long numbers_of_dec_offset(string);
 
     string formatted_output(string, char = 'r');
 
-    string e_method(string, size_t);
+    string e_method(string, long long);
 }
 
 #endif
