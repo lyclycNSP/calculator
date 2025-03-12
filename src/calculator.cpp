@@ -1,5 +1,6 @@
 #include "../lib/calculator.h"
 #include "../lib/addition.h"
+#include "../lib/subtraction.h"
 
 // get arithmetic number from user
 string calculator::get_num()
@@ -47,6 +48,21 @@ string calculator::get_symbol()
     // cin.ignore(1, EOF);
     getline(cin, symbol);
     return symbol;
+}
+
+// this function get the precision the user wants
+long long calculator::get_prec()
+{
+    long long precision{};
+    cout << "Enter an INTEGER to set the precision you want" << endl;
+    cout << "if you are to operate two integers, the precision means";
+    cout << "how many digits after the most significant bit you want to discard" << endl;
+    cout << "if you are to operate two floating points, the precision means";
+    cout << "how many digits after the decimal point you want to reserve" << endl;
+    cout << "enter -1 means you don't want to lose precision" << endl;
+    cin >> precision;
+    cin.ignore(1, EOF);
+    return precision;
 }
 
 // judge if the number is a floating point
@@ -305,7 +321,11 @@ string calculator::e_method(string ans, long long offset)
     if(!is_nega)
     {
         if(ans.length() != 1)
+        {
+            size_t decimal_pos = ans.find('.');
+            ans.erase(decimal_pos, 1);
             ans.insert(ans.begin() + 1, '.');
+        }
     }
     else 
     {
@@ -336,3 +356,132 @@ string calculator::e_method(string ans, long long offset)
     return ans;
 }
 
+// this function handles those annoying digits after the decimal points
+// just kidding, this function set precision to the answer to specific decimal places
+string calculator::set_precision(string ans, long long precision, char method)
+{  
+    if(precision == -1)
+        return ans;
+    
+    if(method == 'r')
+    {
+        // r_method integers
+        if(!is_a_floating_point(ans))
+        {
+            long long digits = ans.length();
+
+            if(precision >= digits)
+            {
+                cout << "the precision you set outweights the digits of the result" << endl;
+                return ans;
+            }
+
+            else
+            {
+                string rounded_ans = ans.substr(0, digits - precision);
+                size_t filling_zero = precision;
+                rounded_ans.append(filling_zero, '0');
+                return rounded_ans;
+            }
+        }
+        
+        // r_method floating points
+        else
+        {
+            auto splited_num = split_flot(ans);
+
+            if(precision == 0)
+                return splited_num.first;
+            else
+            {
+                long long digits_after_dec = splited_num.second.length();
+                if(precision >= digits_after_dec)
+                    return ans;
+                else
+                {
+                    size_t round_bit = splited_num.second[precision] - '0';
+                    if(round_bit <= 4)
+                    {
+                        splited_num.second.erase(precision,digits_after_dec - precision);
+                        ans = splited_num.first + "." + splited_num.second;
+                        return ans;
+                    }
+                    else
+                    {
+                        splited_num.second = addition::integer_addition(splited_num.second, "1");
+                        // if decimal part produces a carry
+                        if(splited_num.second.length() > static_cast<size_t>(precision))
+                        {
+                            splited_num.first = addition::integer_addition(splited_num.first, "1");
+                            ans = splited_num.first + ".0";
+                            return ans;
+                        }
+                        else
+                        {
+                            ans = splited_num.first + "." + splited_num.second;
+                            return ans;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(method == 'e')
+    {
+        if(!is_a_floating_point(ans)) 
+            return ans;
+
+        size_t e_sym_pos = ans.find('E');
+        string e_suffix = ans.substr(e_sym_pos);
+        // now ans is suffix-free
+        ans.erase(ans.begin() + e_sym_pos, ans.end());
+
+        auto splited_num = split_flot(ans);
+
+        // rounding the whole decimal part
+        if(precision == 0)
+        {
+            if(splited_num.second[0] - '0' <= 4)
+                return splited_num.first + e_suffix;
+            else
+            {
+                ans = addition::integer_addition(splited_num.first, "1");
+                return ans + e_suffix;
+            }    
+        }
+        // precision not equal to zero
+        else
+        {
+            size_t digits_after_dec = splited_num.second.length();
+            if(static_cast<size_t>(precision)>= digits_after_dec)
+                return ans + e_suffix;
+            else
+            {
+                size_t round_bit = splited_num.second[precision] - '0';
+                string rounded_decimal_part = splited_num.second.substr(0, precision);
+                if(round_bit <= 4)
+                {
+                    ans = splited_num.first + "." + rounded_decimal_part + e_suffix;
+                    return ans;
+                }
+                else
+                {
+                    rounded_decimal_part = addition::integer_addition(rounded_decimal_part, "1");
+                    // the decimal part produce a carry
+                    if(rounded_decimal_part.length() > static_cast<size_t>(precision))
+                    {
+                        splited_num.first = addition::integer_addition(splited_num.first, "1");
+                        ans = formatted_output(splited_num.first, 'e');
+                        return ans;
+                    }
+                    else
+                    {
+                        ans = splited_num.first + "." + rounded_decimal_part + e_suffix;
+                        return ans;
+                    }
+                }
+            }
+        }
+    }
+    return ans;
+}

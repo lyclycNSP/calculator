@@ -497,6 +497,7 @@ CMakeFiles/calculator.dir/src/calculation.cpp.o: /home/elizabeththh/code/cpp/cal
 CMakeFiles/calculator.dir/src/calculator.cpp.o: /home/elizabeththh/code/cpp/calculator/src/calculator.cpp \
   /home/elizabeththh/code/cpp/calculator/lib/addition.h \
   /home/elizabeththh/code/cpp/calculator/lib/calculator.h \
+  /home/elizabeththh/code/cpp/calculator/lib/subtraction.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \

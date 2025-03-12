@@ -13,11 +13,12 @@ using namespace std;
 
 namespace calculator
 {
-    string calculation(string, string, string, char);
+    string calculation(string, string, string, char, long long);
     
     string get_num();
     string get_symbol();
     string get_method();
+    long long get_prec();
     bool is_a_floating_point(string);
     bool if_carry(string, string);
     pair<string,string> split_flot(string);
@@ -33,6 +34,8 @@ namespace calculator
     string formatted_output(string, char = 'r');
 
     string e_method(string, long long);
+    string set_precision(string, long long, char);
+    void rounding(string&, size_t);
 }
 
 #endif

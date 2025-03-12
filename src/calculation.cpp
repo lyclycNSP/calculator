@@ -11,7 +11,7 @@ using namespace subtraction;
 using namespace multiplication;
 using namespace division;
 
-string calculator::calculation(string first_num, string second_num, string symbol, char method)
+string calculator::calculation(string first_num, string second_num, string symbol, char method, long long precision)
 {
     string ans{};
     bool is_first_num_neg = is_neg(first_num);
@@ -238,6 +238,9 @@ string calculator::calculation(string first_num, string second_num, string symbo
     //             ans.insert(ans.begin(), '-');
     //         }
     // }
-
-    return calculator::formatted_output(ans, method);
+    ans = formatted_output(ans, method);
+    
+    if(precision != -1)
+        ans = set_precision(ans, precision, method);
+    return ans;
 }

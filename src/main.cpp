@@ -43,12 +43,15 @@ int main()
         // get the second number
         string second_num = get_num();
 
+        // get the precision
+        long long precision = get_prec();
+
         // check if the numbers are negative
         cout << endl;
         string ans;
 
         //classify addition and subtraction into a few categories
-        ans = calculation(first_num, second_num, symbol, method[0]);
+        ans = calculation(first_num, second_num, symbol, method[0], precision);
 
         cout << "The result is " << ans << endl;
         cout << endl;
