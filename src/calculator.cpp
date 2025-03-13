@@ -74,6 +74,17 @@ bool calculator::is_a_floating_point(string num)
         return true;
 }
 
+// this function judge if a number is zero
+bool calculator::is_zero(string num)
+{
+    for(auto i: num)
+    {
+        if(isdigit(i) and i > '0')
+            return false;
+    }
+    return true;
+}
+
 // delete the leading zero of the correct result
 void calculator::delete_leading_zero(string& ans)
 {
@@ -183,7 +194,7 @@ int calculator::which_dec_is_bigger(string fir, string sec)
     size_t fir_length = fir.length();
     size_t sec_length = sec.length();
 
-    string longstr = fir_length > sec_length ? fir : sec;
+    string longstr = fir_length >= sec_length ? fir : sec;
     string shortstr = fir_length < sec_length ? fir : sec;
     size_t maxlength = longstr.length();
     size_t minlength = shortstr.length();
@@ -286,7 +297,7 @@ size_t calculator::count_digits(string num)
 // this function format the answer based on the parameter
 string calculator::formatted_output(string ans, char method)
 {
-    if(ans == "0.0" or ans == "0")
+    if(is_zero(ans))
         return "0";
 
     

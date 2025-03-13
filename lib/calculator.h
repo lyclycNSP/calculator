@@ -21,6 +21,7 @@ namespace calculator
     long long get_prec();
     bool is_a_floating_point(string);
     bool if_carry(string, string);
+    bool is_zero(string);
     pair<string,string> split_flot(string);
     void delete_leading_zero(string&);
     bool is_neg(string);
