@@ -177,6 +177,7 @@ string calculator::calculation(string first_num, string second_num, string symbo
     // {
     //     to_absolute(first_num);
     //     to_absolute(second_num);
+            // the signs of two numbers are the same
     //     if(is_first_num_neg == is_sec_num_neg)
     //     {
     //         switch(symbol)
@@ -235,7 +236,8 @@ string calculator::calculation(string first_num, string second_num, string symbo
     //                     default: ans = "Bug:the switch case fall into default";break;
     //                 }
     //             }
-    //             ans.insert(ans.begin(), '-');
+    //             if(ans != "0"); 
+    //                  ans.insert(ans.begin(), '-');
     //         }
     // }
     ans = formatted_output(ans, method);
