@@ -7,6 +7,6 @@ namespace division
     string integer_division(string, string);
     string floating_point_division(string, string);
     
-} //namespace division
+}; //namespace division
 
 #endif

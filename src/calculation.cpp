@@ -172,74 +172,76 @@ string calculator::calculation(string first_num, string second_num, string symbo
         }
     }
     
-    // multiplication and division don't care about the signs when calculating
-    // else if(symbol == '*' or symbol == '/')
-    // {
-    //     to_absolute(first_num);
-    //     to_absolute(second_num);
-            // the signs of two numbers are the same
-    //     if(is_first_num_neg == is_sec_num_neg)
-    //     {
-    //         switch(symbol)
-    //         {
-    //             case '*':
-    //             {
-    //                 if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
-    //                     ans = floating_point_multiplication(first_num, second_num);
-                    
-    //                 else
-    //                     ans = integer_multiplication(first_num, second_num);
-    //             }
+    //multiplication and division don't care about the signs when calculating
+    else if(symbol[0] == '*' or symbol[0] == '/')
+    {
+        to_absolute(first_num);
+        to_absolute(second_num);
 
-    //             case '/':
-    //             {
-    //                 if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
-    //                     ans = floating_point_division(first_num, second_num);
+        //the signs of two numbers are the same
+        if(is_first_num_neg == is_sec_num_neg)
+        {
+            switch(symbol[0])
+            {
+                case '*':
+                {
+                    if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
+                        ans = floating_point_multiplication(first_num, second_num);
                     
-    //                 else
-    //                     ans = integer_division(first_num, second_num);
+                    else
+                        ans = integer_multiplication(first_num, second_num);
+                    break;
+                }
+
+                case '/':
+                {
+                    if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
+                        ans = floating_point_division(first_num, second_num);
                     
-    //                 break;
-    //             }
+                    else
+                        ans = integer_division(first_num, second_num);
+                    
+                    break;
+                }
 
-    //             default: ans = "Bug:the switch case fall into default";break;
-    //         }
-    //     }
+                default: ans = "Bug:the switch case fall into default";break;
+            }
+        }
 
-    //     else
-    //     {
-    //         if(is_first_num_neg != is_sec_num_neg)
-    //         {
-    //             switch(symbol)
-    //             {
-    //                 case '*':
-    //                 {
-    //                     if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
-    //                         ans = floating_point_multiplication(first_num, second_num);
+        else
+        {
+            if(is_first_num_neg != is_sec_num_neg)
+            {
+                switch(symbol[0])
+                {
+                    case '*':
+                    {
+                        if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
+                            ans = floating_point_multiplication(first_num, second_num);
                         
-    //                     else 
-    //                         ans = integer_multiplication(first_num, second_num);
+                        else 
+                            ans = integer_multiplication(first_num, second_num);
                         
-    //                     break;
-    //                     }
+                        break;
+                        }
                         
-    //                     case '/':
-    //                     {
-    //                         if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
-    //                             ans = floating_point_division(first_num, second_num);
+                        case '/':
+                        {
+                            if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
+                                ans = floating_point_division(first_num, second_num);
                             
-    //                         else
-    //                             ans = integer_division(first_num, second_num);
+                            else
+                                ans = integer_division(first_num, second_num);
                             
-    //                         break;
-    //                     }
-    //                     default: ans = "Bug:the switch case fall into default";break;
-    //                 }
-    //             }
-    //             if(ans != "0"); 
-    //                  ans.insert(ans.begin(), '-');
-    //         }
-    // }
+                            break;
+                        }
+                        default: ans = "Bug:the switch case fall into default";break;
+                    }
+                }
+                if(ans != "0")
+                     ans.insert(ans.begin(), '-');
+            }
+    }
     ans = formatted_output(ans, method);
     
     if(precision != -1)

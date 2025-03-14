@@ -1,10 +1,17 @@
-#ifndef DIVISION_H
-#define DIVISION_H
-
 #include "../lib/calculator.h"
+#include "../lib/division.h"
 
-namespace multiplication
+string division::integer_division(string fir, string sec)
 {
+    string ans{};
     
+    return ans;
 }
-#endif
+
+string division::floating_point_division(string fir, string sec)
+{
+    string ans{};
+
+    return ans;
+}
+

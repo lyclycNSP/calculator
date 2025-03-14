@@ -31,7 +31,8 @@ namespace calculator
     size_t get_significant_digits_of_dec(string);
     size_t count_digits(string);
     long long numbers_of_dec_offset(string);
-
+    size_t count_the_zero_at_the_end(string);
+    void remove_end_zeros(string&);
     string formatted_output(string, char = 'r');
 
     string e_method(string, long long);

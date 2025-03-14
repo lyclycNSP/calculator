@@ -30,7 +30,7 @@ string calculator::get_method()
 string calculator::get_symbol()
 {
     cout << endl;
-    cout << "Valid symbols includes '+' '-" << endl;
+    cout << "Valid symbols includes '+' '-' '*' "<< endl;
     cout << "Enter a symbol: " << endl;
     string symbol;
     // while(1)
@@ -77,6 +77,9 @@ bool calculator::is_a_floating_point(string num)
 // this function judge if a number is zero
 bool calculator::is_zero(string num)
 {
+    if(num == "0" or num == "0.0")
+        return true;
+        
     for(auto i: num)
     {
         if(isdigit(i) and i > '0')
@@ -292,6 +295,28 @@ size_t calculator::count_digits(string num)
         digits--;
     
     return digits;
+}
+
+// this function counts how many zeros are at the end of a number
+// remember that the number passed in was reversed
+size_t calculator::count_the_zero_at_the_end(string num)
+{
+    size_t zero_count{};
+    for(auto i: num)
+    {
+        if(i != '0')
+            return zero_count;
+        else
+            zero_count++;
+    }
+    return zero_count;
+}
+
+// this function removes the zeros at the end of the number
+void calculator::remove_end_zeros(string& num)
+{
+    while(num[0] == '0')
+        num.erase(0, 1);
 }
 
 // this function format the answer based on the parameter
