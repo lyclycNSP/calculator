@@ -329,14 +329,10 @@ string calculator::e_method(string ans, long long offset)
     if(is_nega)
         to_absolute(ans);
         
-    if(!is_nega)
+    if(!is_a_floating_point(ans))
     {
         if(ans.length() != 1)
-        {
-            size_t decimal_pos = ans.find('.');
-            ans.erase(decimal_pos, 1);
             ans.insert(ans.begin() + 1, '.');
-        }
     }
     else 
     {
@@ -350,6 +346,7 @@ string calculator::e_method(string ans, long long offset)
                 if(ans.length() != 1)
                     ans.insert(ans.begin() + 1, '.');
             }
+            // else offset must be zero
         }
         else
         {
