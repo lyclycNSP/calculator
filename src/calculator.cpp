@@ -543,7 +543,7 @@ string calculator::move_dec_point(string ans, long long dec_offset)
     }
     else
     {
-        if(static_cast<size_t>(llabs((dec_offset)) < int_pt_len))
+        if((static_cast<size_t>(llabs((dec_offset))) < int_pt_len))
             int_pt.insert(int_pt.begin() + int_pt_len - static_cast<size_t>(llabs(dec_offset)), '.');
         else
         {
