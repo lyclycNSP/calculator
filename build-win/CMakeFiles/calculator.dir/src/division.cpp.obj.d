@@ -192,4 +192,6 @@ CMakeFiles/calculator.dir/src/division.cpp.obj: \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/istream.tcc \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/utility \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/bits/stl_relops.h \
- F:/Code/calculator/lib/division.h F:/Code/calculator/lib/calculator.h
+ F:/Code/calculator/lib/division.h F:/Code/calculator/lib/calculator.h \
+ F:/Code/calculator/lib/multiplication.h \
+ F:/Code/calculator/lib/subtraction.h F:/Code/calculator/lib/addition.h
