@@ -4,9 +4,10 @@
 #include "calculator.h"
 namespace division
 {
-    string integer_division(string, string);
-    string floating_point_division(string, string);
-    
+    string integer_division(string, string, long long);
+    string floating_point_division(string, string, long long);
+    string decide_divident(string, string, size_t&, string&);
+    string divide(string, string, string&);
 }; //namespace division
 
 #endif

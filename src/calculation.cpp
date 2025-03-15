@@ -196,10 +196,10 @@ string calculator::calculation(string first_num, string second_num, string symbo
                 case '/':
                 {
                     if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
-                        ans = floating_point_division(first_num, second_num);
+                        ans = floating_point_division(first_num, second_num, precision);
                     
                     else
-                        ans = integer_division(first_num, second_num);
+                        ans = integer_division(first_num, second_num, precision);
                     
                     break;
                 }
@@ -228,10 +228,10 @@ string calculator::calculation(string first_num, string second_num, string symbo
                         case '/':
                         {
                             if(is_a_floating_point(first_num) or is_a_floating_point(second_num))
-                                ans = floating_point_division(first_num, second_num);
+                                ans = floating_point_division(first_num, second_num, precision);
                             
                             else
-                                ans = integer_division(first_num, second_num);
+                                ans = integer_division(first_num, second_num, precision);
                             
                             break;
                         }
@@ -244,7 +244,7 @@ string calculator::calculation(string first_num, string second_num, string symbo
     }
     ans = formatted_output(ans, method);
     
-    if(precision != -1)
+    if(precision != -1 and symbol[0] != '/')
         ans = set_precision(ans, precision, method);
     return ans;
 }

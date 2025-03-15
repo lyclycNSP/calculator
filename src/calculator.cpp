@@ -30,7 +30,7 @@ string calculator::get_method()
 string calculator::get_symbol()
 {
     cout << endl;
-    cout << "Valid symbols includes '+' '-' '*' "<< endl;
+    cout << "Valid symbols includes '+' '-' '*' '/' "<< endl;
     cout << "Enter a symbol: " << endl;
     string symbol;
     // while(1)
@@ -54,6 +54,7 @@ string calculator::get_symbol()
 long long calculator::get_prec()
 {
     long long precision{};
+    cout << endl;
     cout << "Enter an INTEGER to set the precision you want" << endl;
     cout << "if you are to operate two integers, the precision means";
     cout << "how many digits after the most significant bit you want to discard" << endl;
@@ -163,9 +164,12 @@ void calculator::to_absolute(string& fir)
     return;
 }
 
-// return 1 for fir > sec
-// return -1 for fir < sec
-// return 0 for fir = sec
+/*
+* compare two integers
+* return 1 for fir > sec
+* return -1 for fir < sec
+* return 0 for fir = sec
+*/
 int calculator::which_is_bigger(string fir, string sec)
 {
     size_t fir_length = fir.length();
@@ -515,6 +519,50 @@ string calculator::set_precision(string ans, long long precision, char method)
                 }
             }
         }
+    }
+    return ans;
+}
+
+// this function move a floating point's decimal point
+string calculator::move_dec_point(string ans, long long dec_offset)
+{
+    auto[int_pt, dec_pt] = split_flot(ans);
+    size_t int_pt_len = int_pt.length();
+    size_t dec_pt_len = dec_pt.length();
+    if(dec_offset == 0)
+    {
+        ans = int_pt + "." + dec_pt;
+        return ans;
+    }
+    else if(dec_offset > 0)
+    {
+        if(static_cast<size_t>(dec_offset) < dec_pt_len)
+            dec_pt.insert(dec_pt.begin() + dec_offset, '.');
+        else if(static_cast<size_t>(dec_offset) > dec_pt_len)
+            dec_pt.append(dec_offset - dec_pt_len, '0');
+    }
+    else
+    {
+        if(static_cast<size_t>(llabs((dec_offset)) < int_pt_len))
+            int_pt.insert(int_pt.begin() + int_pt_len - static_cast<size_t>(llabs(dec_offset)), '.');
+        else
+        {
+            for(size_t i{}; i < static_cast<size_t>(llabs(dec_offset)) - int_pt_len + 1; i++)
+                int_pt.insert(int_pt.begin(), '0');
+            int_pt.insert(int_pt.begin() + 1, '.');
+        }
+    }
+    ans = int_pt + dec_pt;
+
+    if(!is_a_floating_point(ans))
+        delete_leading_zero(ans);
+    else
+    {
+        auto[ans_int_pt, ans_dec_pt] = split_flot(ans);
+        delete_leading_zero(ans_int_pt);
+        if(ans_int_pt == "")
+            ans_int_pt = "0";
+        ans = ans_int_pt + "." + ans_dec_pt;
     }
     return ans;
 }

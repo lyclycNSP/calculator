@@ -38,6 +38,7 @@ namespace calculator
     string e_method(string, long long);
     string set_precision(string, long long, char);
     void rounding(string&, size_t);
+    string move_dec_point(string, long long);
 }
 
 #endif
