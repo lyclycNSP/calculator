@@ -786,8 +786,11 @@ CMakeFiles/calculator.dir/src/division.cpp.obj: F:/Code/calculator/src/division.
   C:/mingw64/x86_64-w64-mingw32/include/vadefs.h \
   C:/mingw64/x86_64-w64-mingw32/include/wchar.h \
   C:/mingw64/x86_64-w64-mingw32/include/wctype.h \
+  F:/Code/calculator/lib/addition.h \
   F:/Code/calculator/lib/calculator.h \
-  F:/Code/calculator/lib/division.h
+  F:/Code/calculator/lib/division.h \
+  F:/Code/calculator/lib/multiplication.h \
+  F:/Code/calculator/lib/subtraction.h
 
 CMakeFiles/calculator.dir/src/main.cpp.obj: F:/Code/calculator/src/main.cpp \
   C:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/algorithm \
