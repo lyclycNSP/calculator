@@ -107,7 +107,7 @@ string division::floating_point_division(string fir, string sec, long long prec)
     reverse(fir_dec_pt.begin(), fir_dec_pt.end());
     reverse(sec_dec_pt.begin(), sec_dec_pt.end());
 
-    if(fir_dec_pt != "0")
+    if(!calculator::is_zero(fir_dec_pt))
     {
         dec_offset -= fir_dec_pt.length();
         if(!calculator::is_zero(fir_int_pt))
@@ -115,7 +115,9 @@ string division::floating_point_division(string fir, string sec, long long prec)
         else
             fir = fir_dec_pt;
     }
-    if(sec_dec_pt != "0")
+    else
+        fir = fir_int_pt;
+    if(!calculator::is_zero(sec_dec_pt))
     {
         dec_offset += sec_dec_pt.length();
         if(!calculator::is_zero(sec_int_pt))
@@ -123,6 +125,8 @@ string division::floating_point_division(string fir, string sec, long long prec)
         else
             sec = sec_dec_pt;
     }
+    else 
+        sec = sec_int_pt;
 
     ans = integer_division(fir, sec, prec);
     ans = calculator::move_dec_point(ans, dec_offset);
