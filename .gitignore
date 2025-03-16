@@ -7,8 +7,6 @@
 
 test/test
 
-tests/test.cpp
-
 
 build/.cmake
 
