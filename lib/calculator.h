@@ -18,6 +18,7 @@ namespace calculator
     string get_num();
     string get_symbol();
     string get_method();
+    bool is_a_valid_num(string);
     long long get_prec();
     bool is_a_floating_point(string);
     bool if_carry(string, string);

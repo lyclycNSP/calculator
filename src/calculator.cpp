@@ -9,11 +9,18 @@ string calculator::get_num()
     string num;
     cout << "Warning: invalid input will be identified as zero" << endl;
     cout << "Enter a number: " << endl;
-    getline(cin,num);
-    if(num.length() == 0 or (num.length() == 1 and !isdigit(num[0])))
-        return "0";
-    else
-        return num;
+    
+    while(true)
+    {
+        getline(cin, num);
+        if(!is_a_valid_num(num))
+        {
+            cout << "please enter a valid number: " << endl;
+            continue;
+        }
+        break;
+    }
+    return num;
 }
 
 string calculator::get_method()
@@ -22,7 +29,16 @@ string calculator::get_method()
     string method;
     cout << "Choose a method to display result" << endl;
     cout << "'e' for e_method, 'r' for ordinary_method" << endl;
-    getline(cin, method);
+    while(true)
+    {
+        getline(cin, method);
+        if(!(method == "e" or method == "r"))
+        {
+            cout << "please enter a valid method:" << endl;
+            continue;
+        }
+        break;
+    }
     return method;
 }
 
@@ -33,20 +49,16 @@ string calculator::get_symbol()
     cout << "Valid symbols includes '+' '-' '*' '/' "<< endl;
     cout << "Enter a symbol: " << endl;
     string symbol;
-    // while(1)
-    // {
-    //     cin >> symbol;
-    //     if(symbol != '+' or symbol != '-')
-    //     {
-    //         cout << "Please enter a valid symbol" << endl;
-    //         cin.clear();
-    //         cin.ignore(1, EOF);
-    //     }
-    //     else
-    //         break;
-    // }
-    // cin.ignore(1, EOF);
-    getline(cin, symbol);
+    while(true)
+    {
+        getline(cin, symbol);
+        if(!(symbol == "+" or symbol == "-" or symbol == "*" or symbol == "/"))
+        {
+            cout << "Please enter a valid symbol:" << endl;
+            continue;
+        }
+        break;
+    }
     return symbol;
 }
 
@@ -64,6 +76,35 @@ long long calculator::get_prec()
     cin >> precision;
     cin.ignore(1, EOF);
     return precision;
+}
+
+// this function judges if a number is valid
+bool calculator::is_a_valid_num(string num)
+{
+    size_t len = num.length();
+    if(len == 0)
+        return false;
+    
+    else if(len == 1)
+    {
+        if(!isdigit(num[0]))
+            return false;
+    }
+
+    // len >= 2
+    else
+    {
+        if(!(isdigit(num[0]) or num[0] == '-'))
+            return false;
+        
+        bool is_decimal_point_exist = false;
+        for(size_t i{1}; i < len; i++)
+        {
+            if(!(isdigit(num[i]) or (!is_decimal_point_exist and num[i] == '.' and i != len - 1)))
+                return false;
+        }
+    }
+    return true;
 }
 
 // judge if the number is a floating point
