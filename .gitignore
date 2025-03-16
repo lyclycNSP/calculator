@@ -5,7 +5,10 @@
 
 *.o
 
-test
+test/test
+
+test/test.cpp
+
 
 build/.cmake
 
