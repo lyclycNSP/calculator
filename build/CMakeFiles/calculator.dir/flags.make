@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/elizabeththh/code/cpp/calculator/lib
 
 CXX_FLAGS = -g -std=gnu++23 -Wall -Werror -pedantic -Wconversion -O3
 

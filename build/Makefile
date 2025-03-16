@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/elizabeththh/code/cpp/calculator/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -117,6 +127,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named calculator_lib
+
+# Build rule for target.
+calculator_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 calculator_lib
+.PHONY : calculator_lib
+
+# fast build rule for target.
+calculator_lib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/build
+.PHONY : calculator_lib/fast
+
+#=============================================================================
 # Target rules for targets named calculator
 
 # Build rule for target.
@@ -129,12 +152,25 @@ calculator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/build
 .PHONY : calculator/fast
 
+#=============================================================================
+# Target rules for targets named test_calculator
+
+# Build rule for target.
+test_calculator: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_calculator
+.PHONY : test_calculator
+
+# fast build rule for target.
+test_calculator/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_calculator.dir/build.make CMakeFiles/test_calculator.dir/build
+.PHONY : test_calculator/fast
+
 src/addition.o: src/addition.cpp.o
 .PHONY : src/addition.o
 
 # target to build an object file
 src/addition.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/addition.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/addition.cpp.o
 .PHONY : src/addition.cpp.o
 
 src/addition.i: src/addition.cpp.i
@@ -142,7 +178,7 @@ src/addition.i: src/addition.cpp.i
 
 # target to preprocess a source file
 src/addition.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/addition.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/addition.cpp.i
 .PHONY : src/addition.cpp.i
 
 src/addition.s: src/addition.cpp.s
@@ -150,7 +186,7 @@ src/addition.s: src/addition.cpp.s
 
 # target to generate assembly for a file
 src/addition.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/addition.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/addition.cpp.s
 .PHONY : src/addition.cpp.s
 
 src/calculation.o: src/calculation.cpp.o
@@ -158,7 +194,7 @@ src/calculation.o: src/calculation.cpp.o
 
 # target to build an object file
 src/calculation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/calculation.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/calculation.cpp.o
 .PHONY : src/calculation.cpp.o
 
 src/calculation.i: src/calculation.cpp.i
@@ -166,7 +202,7 @@ src/calculation.i: src/calculation.cpp.i
 
 # target to preprocess a source file
 src/calculation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/calculation.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/calculation.cpp.i
 .PHONY : src/calculation.cpp.i
 
 src/calculation.s: src/calculation.cpp.s
@@ -174,7 +210,7 @@ src/calculation.s: src/calculation.cpp.s
 
 # target to generate assembly for a file
 src/calculation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/calculation.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/calculation.cpp.s
 .PHONY : src/calculation.cpp.s
 
 src/calculator.o: src/calculator.cpp.o
@@ -182,7 +218,7 @@ src/calculator.o: src/calculator.cpp.o
 
 # target to build an object file
 src/calculator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/calculator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/calculator.cpp.o
 .PHONY : src/calculator.cpp.o
 
 src/calculator.i: src/calculator.cpp.i
@@ -190,7 +226,7 @@ src/calculator.i: src/calculator.cpp.i
 
 # target to preprocess a source file
 src/calculator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/calculator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/calculator.cpp.i
 .PHONY : src/calculator.cpp.i
 
 src/calculator.s: src/calculator.cpp.s
@@ -198,7 +234,7 @@ src/calculator.s: src/calculator.cpp.s
 
 # target to generate assembly for a file
 src/calculator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/calculator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/calculator.cpp.s
 .PHONY : src/calculator.cpp.s
 
 src/division.o: src/division.cpp.o
@@ -206,7 +242,7 @@ src/division.o: src/division.cpp.o
 
 # target to build an object file
 src/division.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/division.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/division.cpp.o
 .PHONY : src/division.cpp.o
 
 src/division.i: src/division.cpp.i
@@ -214,7 +250,7 @@ src/division.i: src/division.cpp.i
 
 # target to preprocess a source file
 src/division.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/division.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/division.cpp.i
 .PHONY : src/division.cpp.i
 
 src/division.s: src/division.cpp.s
@@ -222,7 +258,7 @@ src/division.s: src/division.cpp.s
 
 # target to generate assembly for a file
 src/division.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/division.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/division.cpp.s
 .PHONY : src/division.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -254,7 +290,7 @@ src/multiplication.o: src/multiplication.cpp.o
 
 # target to build an object file
 src/multiplication.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/multiplication.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/multiplication.cpp.o
 .PHONY : src/multiplication.cpp.o
 
 src/multiplication.i: src/multiplication.cpp.i
@@ -262,7 +298,7 @@ src/multiplication.i: src/multiplication.cpp.i
 
 # target to preprocess a source file
 src/multiplication.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/multiplication.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/multiplication.cpp.i
 .PHONY : src/multiplication.cpp.i
 
 src/multiplication.s: src/multiplication.cpp.s
@@ -270,7 +306,7 @@ src/multiplication.s: src/multiplication.cpp.s
 
 # target to generate assembly for a file
 src/multiplication.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/multiplication.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/multiplication.cpp.s
 .PHONY : src/multiplication.cpp.s
 
 src/subtraction.o: src/subtraction.cpp.o
@@ -278,7 +314,7 @@ src/subtraction.o: src/subtraction.cpp.o
 
 # target to build an object file
 src/subtraction.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/subtraction.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/subtraction.cpp.o
 .PHONY : src/subtraction.cpp.o
 
 src/subtraction.i: src/subtraction.cpp.i
@@ -286,7 +322,7 @@ src/subtraction.i: src/subtraction.cpp.i
 
 # target to preprocess a source file
 src/subtraction.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/subtraction.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/subtraction.cpp.i
 .PHONY : src/subtraction.cpp.i
 
 src/subtraction.s: src/subtraction.cpp.s
@@ -294,8 +330,32 @@ src/subtraction.s: src/subtraction.cpp.s
 
 # target to generate assembly for a file
 src/subtraction.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator.dir/build.make CMakeFiles/calculator.dir/src/subtraction.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/calculator_lib.dir/build.make CMakeFiles/calculator_lib.dir/src/subtraction.cpp.s
 .PHONY : src/subtraction.cpp.s
+
+tests/test_calculator.o: tests/test_calculator.cpp.o
+.PHONY : tests/test_calculator.o
+
+# target to build an object file
+tests/test_calculator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_calculator.dir/build.make CMakeFiles/test_calculator.dir/tests/test_calculator.cpp.o
+.PHONY : tests/test_calculator.cpp.o
+
+tests/test_calculator.i: tests/test_calculator.cpp.i
+.PHONY : tests/test_calculator.i
+
+# target to preprocess a source file
+tests/test_calculator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_calculator.dir/build.make CMakeFiles/test_calculator.dir/tests/test_calculator.cpp.i
+.PHONY : tests/test_calculator.cpp.i
+
+tests/test_calculator.s: tests/test_calculator.cpp.s
+.PHONY : tests/test_calculator.s
+
+# target to generate assembly for a file
+tests/test_calculator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_calculator.dir/build.make CMakeFiles/test_calculator.dir/tests/test_calculator.cpp.s
+.PHONY : tests/test_calculator.cpp.s
 
 # Help Target
 help:
@@ -305,7 +365,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... calculator"
+	@echo "... calculator_lib"
+	@echo "... test_calculator"
 	@echo "... src/addition.o"
 	@echo "... src/addition.i"
 	@echo "... src/addition.s"
@@ -327,6 +390,9 @@ help:
 	@echo "... src/subtraction.o"
 	@echo "... src/subtraction.i"
 	@echo "... src/subtraction.s"
+	@echo "... tests/test_calculator.o"
+	@echo "... tests/test_calculator.i"
+	@echo "... tests/test_calculator.s"
 .PHONY : help
 
 

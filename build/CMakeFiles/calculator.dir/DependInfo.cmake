@@ -8,13 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/elizabeththh/code/cpp/calculator/src/addition.cpp" "CMakeFiles/calculator.dir/src/addition.cpp.o" "gcc" "CMakeFiles/calculator.dir/src/addition.cpp.o.d"
-  "/home/elizabeththh/code/cpp/calculator/src/calculation.cpp" "CMakeFiles/calculator.dir/src/calculation.cpp.o" "gcc" "CMakeFiles/calculator.dir/src/calculation.cpp.o.d"
-  "/home/elizabeththh/code/cpp/calculator/src/calculator.cpp" "CMakeFiles/calculator.dir/src/calculator.cpp.o" "gcc" "CMakeFiles/calculator.dir/src/calculator.cpp.o.d"
-  "/home/elizabeththh/code/cpp/calculator/src/division.cpp" "CMakeFiles/calculator.dir/src/division.cpp.o" "gcc" "CMakeFiles/calculator.dir/src/division.cpp.o.d"
   "/home/elizabeththh/code/cpp/calculator/src/main.cpp" "CMakeFiles/calculator.dir/src/main.cpp.o" "gcc" "CMakeFiles/calculator.dir/src/main.cpp.o.d"
-  "/home/elizabeththh/code/cpp/calculator/src/multiplication.cpp" "CMakeFiles/calculator.dir/src/multiplication.cpp.o" "gcc" "CMakeFiles/calculator.dir/src/multiplication.cpp.o.d"
-  "/home/elizabeththh/code/cpp/calculator/src/subtraction.cpp" "CMakeFiles/calculator.dir/src/subtraction.cpp.o" "gcc" "CMakeFiles/calculator.dir/src/subtraction.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

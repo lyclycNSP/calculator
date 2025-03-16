@@ -22,13 +22,26 @@ set(SOURCES
     ${SOURCE_DIR}/calculation.cpp
     ${SOURCE_DIR}/calculator.cpp
     ${SOURCE_DIR}/division.cpp
-    ${SOURCE_DIR}/main.cpp
     ${SOURCE_DIR}/multiplication.cpp
     ${SOURCE_DIR}/subtraction.cpp
 )
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+# 1️⃣ 生成一个静态库 calculator_lib
+add_library(calculator_lib STATIC ${SOURCES})
+target_include_directories(calculator_lib PUBLIC ${INCLUDE_DIRECTORIES})
 
+# 2️⃣ 生成可执行文件 calculator（主程序）
+add_executable(calculator ${SOURCE_DIR}/main.cpp)
+target_link_libraries(calculator PRIVATE calculator_lib)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${INCULDE_DIR})
+# ------------- 添加 Catch2 测试 -------------
+enable_testing()  # 启用 CMake 测试功能
 
+set(TEST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_calculator.cpp)
+
+# 3️⃣ 生成测试可执行文件 test_calculator
+add_executable(test_calculator ${TEST_SOURCES})
+target_include_directories(test_calculator PRIVATE ${INCLUDE_DIRECTORIES})
+target_link_libraries(test_calculator PRIVATE calculator_lib) # 这里链接 calculator_lib
+
+add_test(NAME CalculatorTests COMMAND test_calculator) # 添加测试命令
