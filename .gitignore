@@ -11,5 +11,7 @@ learn.cpp
 
 a.out
 
+tests/test
+
 build/.cmake
 

@@ -113,7 +113,10 @@ string division::floating_point_division(string fir, string sec, long long prec)
         if(!calculator::is_zero(fir_int_pt))
             fir = fir_int_pt + fir_dec_pt;
         else
+        {
             fir = fir_dec_pt;
+            calculator::delete_leading_zero(fir);
+        }
     }
     else
         fir = fir_int_pt;
@@ -123,7 +126,10 @@ string division::floating_point_division(string fir, string sec, long long prec)
         if(!calculator::is_zero(sec_int_pt))
             sec = sec_int_pt + sec_dec_pt;
         else
+        {
             sec = sec_dec_pt;
+            calculator::delete_leading_zero(sec);
+        }
     }
     else 
         sec = sec_int_pt;
