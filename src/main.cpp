@@ -1,3 +1,12 @@
+/*
+         |-----------------------|
+         |                       |
+         |   simple calculator   |
+         |    Release v0.1 :-)   |
+         |                       |
+         |-----------------------|
+*/
+
 // a simple calculator based on command line
 // the calculation logic of this calculator is based on
 // both the operation numbers are positive
