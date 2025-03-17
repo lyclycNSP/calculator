@@ -4,7 +4,7 @@
 # compile CXX with C:/mingw64/bin/g++.exe
 CXX_DEFINES = 
 
-CXX_INCLUDES = @CMakeFiles/calculator.dir/includes_CXX.rsp
+CXX_INCLUDES = @CMakeFiles/test_calculator.dir/includes_CXX.rsp
 
 CXX_FLAGS = -std=gnu++23 -Wall -Werror -pedantic -Wconversion -O3
 

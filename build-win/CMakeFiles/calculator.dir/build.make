@@ -71,66 +71,11 @@ include CMakeFiles/calculator.dir/flags.make
 CMakeFiles/calculator.dir/codegen:
 .PHONY : CMakeFiles/calculator.dir/codegen
 
-CMakeFiles/calculator.dir/src/addition.cpp.obj: CMakeFiles/calculator.dir/flags.make
-CMakeFiles/calculator.dir/src/addition.cpp.obj: F:/Code/calculator/src/addition.cpp
-CMakeFiles/calculator.dir/src/addition.cpp.obj: CMakeFiles/calculator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\Code\calculator\build-win\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/calculator.dir/src/addition.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/calculator.dir/src/addition.cpp.obj -MF CMakeFiles\calculator.dir\src\addition.cpp.obj.d -o CMakeFiles\calculator.dir\src\addition.cpp.obj -c F:\Code\calculator\src\addition.cpp
-
-CMakeFiles/calculator.dir/src/addition.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/calculator.dir/src/addition.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\Code\calculator\src\addition.cpp > CMakeFiles\calculator.dir\src\addition.cpp.i
-
-CMakeFiles/calculator.dir/src/addition.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/calculator.dir/src/addition.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\Code\calculator\src\addition.cpp -o CMakeFiles\calculator.dir\src\addition.cpp.s
-
-CMakeFiles/calculator.dir/src/calculation.cpp.obj: CMakeFiles/calculator.dir/flags.make
-CMakeFiles/calculator.dir/src/calculation.cpp.obj: F:/Code/calculator/src/calculation.cpp
-CMakeFiles/calculator.dir/src/calculation.cpp.obj: CMakeFiles/calculator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\Code\calculator\build-win\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/calculator.dir/src/calculation.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/calculator.dir/src/calculation.cpp.obj -MF CMakeFiles\calculator.dir\src\calculation.cpp.obj.d -o CMakeFiles\calculator.dir\src\calculation.cpp.obj -c F:\Code\calculator\src\calculation.cpp
-
-CMakeFiles/calculator.dir/src/calculation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/calculator.dir/src/calculation.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\Code\calculator\src\calculation.cpp > CMakeFiles\calculator.dir\src\calculation.cpp.i
-
-CMakeFiles/calculator.dir/src/calculation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/calculator.dir/src/calculation.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\Code\calculator\src\calculation.cpp -o CMakeFiles\calculator.dir\src\calculation.cpp.s
-
-CMakeFiles/calculator.dir/src/calculator.cpp.obj: CMakeFiles/calculator.dir/flags.make
-CMakeFiles/calculator.dir/src/calculator.cpp.obj: F:/Code/calculator/src/calculator.cpp
-CMakeFiles/calculator.dir/src/calculator.cpp.obj: CMakeFiles/calculator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\Code\calculator\build-win\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/calculator.dir/src/calculator.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/calculator.dir/src/calculator.cpp.obj -MF CMakeFiles\calculator.dir\src\calculator.cpp.obj.d -o CMakeFiles\calculator.dir\src\calculator.cpp.obj -c F:\Code\calculator\src\calculator.cpp
-
-CMakeFiles/calculator.dir/src/calculator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/calculator.dir/src/calculator.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\Code\calculator\src\calculator.cpp > CMakeFiles\calculator.dir\src\calculator.cpp.i
-
-CMakeFiles/calculator.dir/src/calculator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/calculator.dir/src/calculator.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\Code\calculator\src\calculator.cpp -o CMakeFiles\calculator.dir\src\calculator.cpp.s
-
-CMakeFiles/calculator.dir/src/division.cpp.obj: CMakeFiles/calculator.dir/flags.make
-CMakeFiles/calculator.dir/src/division.cpp.obj: F:/Code/calculator/src/division.cpp
-CMakeFiles/calculator.dir/src/division.cpp.obj: CMakeFiles/calculator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\Code\calculator\build-win\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/calculator.dir/src/division.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/calculator.dir/src/division.cpp.obj -MF CMakeFiles\calculator.dir\src\division.cpp.obj.d -o CMakeFiles\calculator.dir\src\division.cpp.obj -c F:\Code\calculator\src\division.cpp
-
-CMakeFiles/calculator.dir/src/division.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/calculator.dir/src/division.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\Code\calculator\src\division.cpp > CMakeFiles\calculator.dir\src\division.cpp.i
-
-CMakeFiles/calculator.dir/src/division.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/calculator.dir/src/division.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\Code\calculator\src\division.cpp -o CMakeFiles\calculator.dir\src\division.cpp.s
-
 CMakeFiles/calculator.dir/src/main.cpp.obj: CMakeFiles/calculator.dir/flags.make
+CMakeFiles/calculator.dir/src/main.cpp.obj: CMakeFiles/calculator.dir/includes_CXX.rsp
 CMakeFiles/calculator.dir/src/main.cpp.obj: F:/Code/calculator/src/main.cpp
 CMakeFiles/calculator.dir/src/main.cpp.obj: CMakeFiles/calculator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\Code\calculator\build-win\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/calculator.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\Code\calculator\build-win\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/calculator.dir/src/main.cpp.obj"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/calculator.dir/src/main.cpp.obj -MF CMakeFiles\calculator.dir\src\main.cpp.obj.d -o CMakeFiles\calculator.dir\src\main.cpp.obj -c F:\Code\calculator\src\main.cpp
 
 CMakeFiles/calculator.dir/src/main.cpp.i: cmake_force
@@ -141,59 +86,20 @@ CMakeFiles/calculator.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/calculator.dir/src/main.cpp.s"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\Code\calculator\src\main.cpp -o CMakeFiles\calculator.dir\src\main.cpp.s
 
-CMakeFiles/calculator.dir/src/multiplication.cpp.obj: CMakeFiles/calculator.dir/flags.make
-CMakeFiles/calculator.dir/src/multiplication.cpp.obj: F:/Code/calculator/src/multiplication.cpp
-CMakeFiles/calculator.dir/src/multiplication.cpp.obj: CMakeFiles/calculator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\Code\calculator\build-win\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/calculator.dir/src/multiplication.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/calculator.dir/src/multiplication.cpp.obj -MF CMakeFiles\calculator.dir\src\multiplication.cpp.obj.d -o CMakeFiles\calculator.dir\src\multiplication.cpp.obj -c F:\Code\calculator\src\multiplication.cpp
-
-CMakeFiles/calculator.dir/src/multiplication.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/calculator.dir/src/multiplication.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\Code\calculator\src\multiplication.cpp > CMakeFiles\calculator.dir\src\multiplication.cpp.i
-
-CMakeFiles/calculator.dir/src/multiplication.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/calculator.dir/src/multiplication.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\Code\calculator\src\multiplication.cpp -o CMakeFiles\calculator.dir\src\multiplication.cpp.s
-
-CMakeFiles/calculator.dir/src/subtraction.cpp.obj: CMakeFiles/calculator.dir/flags.make
-CMakeFiles/calculator.dir/src/subtraction.cpp.obj: F:/Code/calculator/src/subtraction.cpp
-CMakeFiles/calculator.dir/src/subtraction.cpp.obj: CMakeFiles/calculator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=F:\Code\calculator\build-win\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/calculator.dir/src/subtraction.cpp.obj"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/calculator.dir/src/subtraction.cpp.obj -MF CMakeFiles\calculator.dir\src\subtraction.cpp.obj.d -o CMakeFiles\calculator.dir\src\subtraction.cpp.obj -c F:\Code\calculator\src\subtraction.cpp
-
-CMakeFiles/calculator.dir/src/subtraction.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/calculator.dir/src/subtraction.cpp.i"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\Code\calculator\src\subtraction.cpp > CMakeFiles\calculator.dir\src\subtraction.cpp.i
-
-CMakeFiles/calculator.dir/src/subtraction.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/calculator.dir/src/subtraction.cpp.s"
-	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\Code\calculator\src\subtraction.cpp -o CMakeFiles\calculator.dir\src\subtraction.cpp.s
-
 # Object files for target calculator
 calculator_OBJECTS = \
-"CMakeFiles/calculator.dir/src/addition.cpp.obj" \
-"CMakeFiles/calculator.dir/src/calculation.cpp.obj" \
-"CMakeFiles/calculator.dir/src/calculator.cpp.obj" \
-"CMakeFiles/calculator.dir/src/division.cpp.obj" \
-"CMakeFiles/calculator.dir/src/main.cpp.obj" \
-"CMakeFiles/calculator.dir/src/multiplication.cpp.obj" \
-"CMakeFiles/calculator.dir/src/subtraction.cpp.obj"
+"CMakeFiles/calculator.dir/src/main.cpp.obj"
 
 # External object files for target calculator
 calculator_EXTERNAL_OBJECTS =
 
-calculator.exe: CMakeFiles/calculator.dir/src/addition.cpp.obj
-calculator.exe: CMakeFiles/calculator.dir/src/calculation.cpp.obj
-calculator.exe: CMakeFiles/calculator.dir/src/calculator.cpp.obj
-calculator.exe: CMakeFiles/calculator.dir/src/division.cpp.obj
 calculator.exe: CMakeFiles/calculator.dir/src/main.cpp.obj
-calculator.exe: CMakeFiles/calculator.dir/src/multiplication.cpp.obj
-calculator.exe: CMakeFiles/calculator.dir/src/subtraction.cpp.obj
 calculator.exe: CMakeFiles/calculator.dir/build.make
+calculator.exe: libcalculator_lib.a
 calculator.exe: CMakeFiles/calculator.dir/linkLibs.rsp
 calculator.exe: CMakeFiles/calculator.dir/objects1.rsp
 calculator.exe: CMakeFiles/calculator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=F:\Code\calculator\build-win\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable calculator.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=F:\Code\calculator\build-win\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable calculator.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\calculator.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
