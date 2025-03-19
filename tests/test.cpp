@@ -14,8 +14,8 @@ namespace calculator
     string calculation(string, string, string, char, long long);
     
     string get_num();
-    string get_symbol();
-    string get_method();
+    string get_operator();
+    string get_notation();
     long long get_prec();
     bool is_a_floating_point(string);
     bool if_carry(string, string);
@@ -93,13 +93,13 @@ int main()
     while(flag != 'q')
     {
         // get the output method
-        string method = get_method();
+        string method = get_notation();
         
         // get the first number
         string first_num = get_num();
         
         // get the operation symbol;
-        string symbol = get_symbol();
+        string symbol = get_operator();
         
         // get the second number
         string second_num = get_num();
@@ -375,7 +375,7 @@ string calculator::get_num()
         return num;
 }
 
-string calculator::get_method()
+string calculator::get_notation()
 {
     cout << endl;
     string method;
@@ -386,7 +386,7 @@ string calculator::get_method()
 }
 
 // get arithmetic symbol from user
-string calculator::get_symbol()
+string calculator::get_operator()
 {
     cout << endl;
     cout << "Valid symbols includes '+' '-' '*' '/' "<< endl;
