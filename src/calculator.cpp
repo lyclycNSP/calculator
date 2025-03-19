@@ -564,7 +564,12 @@ string calculator::set_precision(string ans, long long precision, char method)
     return ans;
 }
 
-// this function move a floating point's decimal point
+/*
+* this function move a floating point's decimal point
+* dec_offset = 0 indicates the decimal point is right in place
+* dec_offset < 0 indicates to move the decimal point to its right
+* dec_offset > 0 indicates to move the decimal point to its left
+*/
 string calculator::move_dec_point(string ans, long long dec_offset)
 {
     auto[int_pt, dec_pt] = split_flot(ans);
