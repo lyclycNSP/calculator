@@ -28,9 +28,11 @@ using namespace division;
 
 int main()
 {
-    cout << "a simple calculator" << endl;
-    cout << "enter 'q' to quit" << endl;
-    cout << "enter other characters to continue" << endl;
+    cout <<"Calculator that supports four arithmetic operations(for now). Developed by Elizabeththh (v0.1)" << endl;
+    cout << endl;
+
+    cout << "Enter 'q' to quit" << endl;
+    cout << "Enter any other character to continue" << endl;
     cout << "WARNING: you could enter ONLY ONE CHARACTER or unexpected error will occur" << endl;
     
     int flag{};
@@ -41,13 +43,13 @@ int main()
     while(flag != 'q')
     {
         // get the output method
-        string method = get_method();
+        string method = get_notation();
         
         // get the first number
         string first_num = get_num();
         
         // get the operation symbol;
-        string symbol = get_symbol();
+        string op = get_operator();
         
         // get the second number
         string second_num = get_num();
@@ -60,12 +62,12 @@ int main()
         string ans;
 
         //classify addition and subtraction into a few categories
-        ans = calculation(first_num, second_num, symbol, method[0], precision);
+        ans = calculation(first_num, second_num, op, method[0], precision);
 
         cout << "The result is " << ans << endl;
         cout << endl;
 
-        cout << "a simple calculator, enter q to quit, enter any other to continue" << endl;
+        cout << "Enter q to quit, enter any other to continue" << endl;
         flag = cin.get();
         cin.ignore();
     }

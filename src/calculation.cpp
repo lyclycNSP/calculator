@@ -11,18 +11,18 @@ using namespace subtraction;
 using namespace multiplication;
 using namespace division;
 
-string calculator::calculation(string first_num, string second_num, string symbol, char method, long long precision)
+string calculator::calculation(string first_num, string second_num, string op, char notation, long long precision)
 {
     string ans{};
     bool is_first_num_neg = is_neg(first_num);
     bool is_sec_num_neg = is_neg(second_num);
     
-    if(symbol[0] == '+' or symbol[0] == '-')
+    if(op[0] == '+' or op[0] == '-')
     {
         //first: both numbers are positive 
         if(!is_first_num_neg and !is_sec_num_neg)
         {
-            switch(symbol[0])
+            switch(op[0])
             {
                 case '+':
                 {
@@ -55,7 +55,7 @@ string calculator::calculation(string first_num, string second_num, string symbo
         else if(is_first_num_neg and !is_sec_num_neg)
         {
             to_absolute(first_num);
-            switch(symbol[0])
+            switch(op[0])
             {
                 // this case is equivalent to sec - abs(fir)
                 case '+':
@@ -96,7 +96,7 @@ string calculator::calculation(string first_num, string second_num, string symbo
         else if(!is_first_num_neg and is_sec_num_neg)
         {
             to_absolute(second_num);
-            switch(symbol[0])
+            switch(op[0])
             {
                 //this case is equivalent to fir - abs(sec)
                 case '+':
@@ -133,7 +133,7 @@ string calculator::calculation(string first_num, string second_num, string symbo
         {
             to_absolute(first_num);
             to_absolute(second_num);
-            switch(symbol[0])
+            switch(op[0])
             {
                 // this case is equivalent to -(abs(fir) + abs(sec))
                 case '+':
@@ -173,7 +173,7 @@ string calculator::calculation(string first_num, string second_num, string symbo
     }
     
     //multiplication and division don't care about the signs when calculating
-    else if(symbol[0] == '*' or symbol[0] == '/')
+    else if(op[0] == '*' or op[0] == '/')
     {
         to_absolute(first_num);
         to_absolute(second_num);
@@ -181,7 +181,7 @@ string calculator::calculation(string first_num, string second_num, string symbo
         //the signs of two numbers are the same
         if(is_first_num_neg == is_sec_num_neg)
         {
-            switch(symbol[0])
+            switch(op[0])
             {
                 case '*':
                 {
@@ -212,7 +212,7 @@ string calculator::calculation(string first_num, string second_num, string symbo
         {
             if(is_first_num_neg != is_sec_num_neg)
             {
-                switch(symbol[0])
+                switch(op[0])
                 {
                     case '*':
                     {
@@ -242,9 +242,9 @@ string calculator::calculation(string first_num, string second_num, string symbo
                      ans.insert(ans.begin(), '-');
             }
     }
-    ans = formatted_output(ans, method);
+    ans = formatted_output(ans, notation);
     
-    if(precision != -1 and symbol[0] != '/')
-        ans = set_precision(ans, precision, method);
+    if(precision != -1 and op[0] != '/')
+        ans = set_precision(ans, precision, notation);
     return ans;
 }

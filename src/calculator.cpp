@@ -7,7 +7,7 @@ string calculator::get_num()
 {
     cout << endl;
     string num;
-    cout << "Warning: invalid input will be identified as zero" << endl;
+    
     cout << "Enter a number: " << endl;
     
     while(true)
@@ -23,43 +23,43 @@ string calculator::get_num()
     return num;
 }
 
-string calculator::get_method()
+string calculator::get_notation()
 {
     cout << endl;
-    string method;
-    cout << "Choose a method to display result" << endl;
-    cout << "'e' for e_method, 'r' for ordinary_method" << endl;
+    string notation;
+    cout << "Choose a notation to display result" << endl;
+    cout << "'e' for Scientific Notation, 'p' for Plain Number" << endl;
     while(true)
     {
-        getline(cin, method);
-        if(!(method == "e" or method == "r"))
+        getline(cin, notation);
+        if(!(notation == "e" or notation == "p"))
         {
-            cout << "please enter a valid method:" << endl;
+            cout << "please enter a valid notation:" << endl;
             continue;
         }
         break;
     }
-    return method;
+    return notation;
 }
 
 // get arithmetic symbol from user
-string calculator::get_symbol()
+string calculator::get_operator()
 {
     cout << endl;
-    cout << "Valid symbols includes '+' '-' '*' '/' "<< endl;
-    cout << "Enter a symbol: " << endl;
-    string symbol;
+    cout << "Valid operators includes '+' '-' '*' '/' "<< endl;
+    cout << "Enter a operator: " << endl;
+    string op;
     while(true)
     {
-        getline(cin, symbol);
-        if(!(symbol == "+" or symbol == "-" or symbol == "*" or symbol == "/"))
+        getline(cin, op);
+        if(!(op == "+" or op == "-" or op == "*" or op == "/"))
         {
-            cout << "Please enter a valid symbol:" << endl;
+            cout << "Please enter a valid operator:" << endl;
             continue;
         }
         break;
     }
-    return symbol;
+    return op;
 }
 
 // this function get the precision the user wants
@@ -68,11 +68,11 @@ long long calculator::get_prec()
     long long precision{};
     cout << endl;
     cout << "Enter an INTEGER to set the precision you want" << endl;
-    cout << "if you are to operate two integers, the precision means";
-    cout << "how many digits after the most significant bit you want to discard" << endl;
-    cout << "if you are to operate two floating points, the precision means";
-    cout << "how many digits after the decimal point you want to reserve" << endl;
-    cout << "enter -1 means you don't want to lose precision" << endl;
+    cout << "If you are to operate two integers, the precision means";
+    cout << "How many digits after the most significant bit you want to discard" << endl;
+    cout << "If you are to operate two floating points, the precision means";
+    cout << "How many digits after the decimal point you want to reserve" << endl;
+    cout << "Enter -1 means you don't want to lose precision except division, and the division precision is 20 by default" << endl;
     cin >> precision;
     cin.ignore(1, EOF);
     return precision;
@@ -365,16 +365,16 @@ void calculator::remove_end_zeros(string& num)
 }
 
 // this function format the answer based on the parameter
-string calculator::formatted_output(string ans, char method)
+string calculator::formatted_output(string ans, char notation)
 {
     if(is_zero(ans))
         return "0";
 
     
     string modified_ans{ans};
-    switch(method)
+    switch(notation)
     {
-        case 'r':
+        case 'p':
             return modified_ans;
 
         case 'e':
@@ -436,12 +436,12 @@ string calculator::e_method(string ans, long long offset)
 
 // this function handles those annoying digits after the decimal points
 // just kidding, this function set precision to the answer to specific decimal places
-string calculator::set_precision(string ans, long long precision, char method)
+string calculator::set_precision(string ans, long long precision, char notation)
 {  
     if(precision == -1)
         return ans;
     
-    if(method == 'r')
+    if(notation == 'r')
     {
         // r_method integers
         if(!is_a_floating_point(ans))
@@ -504,7 +504,7 @@ string calculator::set_precision(string ans, long long precision, char method)
             }
         }
     }
-    else if(method == 'e')
+    else if(notation == 'e')
     {
         if(!is_a_floating_point(ans)) 
             return ans;
