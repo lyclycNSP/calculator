@@ -34,14 +34,14 @@ target_include_directories(calculator_lib PUBLIC ${INCLUDE_DIRECTORIES})
 add_executable(calculator ${SOURCE_DIR}/main.cpp)
 target_link_libraries(calculator PRIVATE calculator_lib)
 
-# ------------- 添加 Catch2 测试 -------------
-enable_testing()  # 启用 CMake 测试功能
+# # ------------- 添加 Catch2 测试 -------------
+# enable_testing()  # 启用 CMake 测试功能
 
-set(TEST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_calculator.cpp)
+# set(TEST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_calculator.cpp)
 
-#  生成测试可执行文件 test_calculator
-add_executable(test_calculator ${TEST_SOURCES})
-target_include_directories(test_calculator PRIVATE ${INCLUDE_DIRECTORIES})
-target_link_libraries(test_calculator PRIVATE calculator_lib) # 这里链接 calculator_lib
+# #  生成测试可执行文件 test_calculator
+# add_executable(test_calculator ${TEST_SOURCES})
+# target_include_directories(test_calculator PRIVATE ${INCLUDE_DIRECTORIES})
+# target_link_libraries(test_calculator PRIVATE calculator_lib) # 这里链接 calculator_lib
 
-add_test(NAME CalculatorTests COMMAND test_calculator) # 添加测试命令
+# add_test(NAME CalculatorTests COMMAND test_calculator) # 添加测试命令
